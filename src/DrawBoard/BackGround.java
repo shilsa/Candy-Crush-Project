@@ -14,6 +14,7 @@ public class BackGround {
 	public void set(){
 		Scanner h = new Scanner(System.in);
 		i = h.nextInt();
+		System.out.printl("haha");
 	}
 
 }
