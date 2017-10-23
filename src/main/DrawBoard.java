@@ -4,32 +4,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Graphics;
 
-public class DrawBoard extends JFrame{
-	public static final int WIDTH = 800, HEIGHT = 600;
-	
-	public void drawBoard(){
-		JFrame frame = new JFrame("Candy Crush");
-		JLabel label = new JLabel("");
-		ImageIcon image = new ImageIcon("BG.jgp");
-		frame.setVisible(true);
-		frame.setSize(WIDTH,HEIGHT);
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
-		frame.setResizable(false);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		label.setIcon(image);
-		label.setVisible(true);
-		frame.add(label);
+public class DrawBoard extends JPanel{
+	private ImageIcon BG;
+	public void painter(Graphics g){
+		// draw Background
+	/*	BG = new ImageIcon("BG1.jpg");
+		BG.paintIcon(this, g, 20, 20);
+		g.setColor(Color.blue);
+		g.fillRect(24,74, 20, 20);*/
+		g.setColor(Color.blue);
+		g.drawRect(25,30, 200, 50);
 	}
-	public void DrawTest(){
-			JLabel Label = new JLabel();
-			add(Label);
-			setSize(WIDTH, HEIGHT);
-			setLocation(600,300);
-			setVisible(true);
-			ImageIcon icon = new ImageIcon("BG.jpg");
-			Label.setIcon(icon);
-	}
-
 }
