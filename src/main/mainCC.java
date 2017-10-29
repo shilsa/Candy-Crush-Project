@@ -14,7 +14,6 @@ public class mainCC {
 		frame.setVisible(true);
 		frame.setSize(WIDTH,HEIGHT);
 		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(draw);

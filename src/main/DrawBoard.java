@@ -36,8 +36,6 @@ public class DrawBoard extends JPanel{
 		Gemname.add(gem3);
 		Gemname.add(gem4);
 		Gemname.add(gem5);
-		Gemname.get(0);
-		System.out.println(Gemname.get(0));
 	}
 	JLabel Score = new JLabel();
 	protected void paintComponent(Graphics g) {
