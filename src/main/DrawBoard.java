@@ -37,6 +37,17 @@ public class DrawBoard extends JPanel{
 		Gemname.add(gem4);
 		Gemname.add(gem5);
 	}
+	// Assign CandyLocation to an array
+	void BlockLocation(){
+		int row = 0;
+		int col = 0;
+		int[][] blocklocation = new int[10][10];
+		for(row = 0;row<5;row++){
+			for(col = 0;col<5;col++){
+				blocklocation[row][col] = 1;
+			}
+		}
+	}
 	JLabel Score = new JLabel();
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g); 
@@ -64,6 +75,7 @@ public class DrawBoard extends JPanel{
 				int rand = random.nextInt(5) + 0;
 				Candy = new ImageIcon(Gemname.get(rand).toString());
 				Candy.paintIcon(this, g, CandyX, CandyY);
+				
 				CandyX = CandyX + 100;
 			}
 			CandyX = 61;
