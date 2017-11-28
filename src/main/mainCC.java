@@ -11,6 +11,8 @@ public class mainCC {
 	public mainCC(){
 		JFrame frame = new JFrame("Candy Crush");
 		DrawBoard draw = new DrawBoard();
+		draw.BlockLocation();
+//		draw.paintComponent();
 		frame.setVisible(true);
 		frame.setSize(WIDTH,HEIGHT);
 		frame.setLocationRelativeTo(null);

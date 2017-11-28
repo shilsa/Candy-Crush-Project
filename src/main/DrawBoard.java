@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Random;
 
 public class DrawBoard extends JPanel{
+	final private int row = 5;
+	final private int col = 5;
 	private ImageIcon BG,Candy;
 	private ImageIcon tittle;
 	private int borderLocationX = 45;
@@ -20,6 +22,9 @@ public class DrawBoard extends JPanel{
 	private int CandyX = 61;
 	private int CandyY = 165;
 	private static int CandyNumber = 25;
+	protected int[][] candyBoard = new int[10][10];
+	
+	
 	// create random variable for the string name
 	Random random = new Random();
 	// declare string name
@@ -38,15 +43,17 @@ public class DrawBoard extends JPanel{
 		Gemname.add(gem5);
 	}
 	// Assign BlockLocation to an array
-	void BlockLocation(){
-		int row = 0;
-		int col = 0;
-		int[][] blocklocation = new int[10][10];
-		for(row = 0;row<5;row++){
-			for(col = 0;col<5;col++){
-				blocklocation[row][col] = 1;
-			}
+	void BlockLocation(){	
+		for(int i = 0; i < row; i++){
+			for(int j = 0; j < col; j++){
+				int rand = random.nextInt(5) + 0;
+				candyBoard[i][j] = rand;
+	//			while ((candyBoard[i][j] == candyBoard[i][j - 1] && candyBoard[i][j] == candyBoard[i][j - 2]) ||
+		//				(candyBoard[i][j] == candyBoard[i - 1][j] && candyBoard[i][j] == candyBoard[i - 2][j])) {
+			//		candyBoard[i][j] = random.nextInt(5) + 0;
+	//		}
 		}
+	}
 	}
 	JLabel Score = new JLabel();
 	protected void paintComponent(Graphics g) {
@@ -70,12 +77,12 @@ public class DrawBoard extends JPanel{
 			borderLocationY = borderLocationY + 100;
 		}
 		// draw the Candy
-		for(int k = 0; k < 5 ; k++ ){
-			for(int k2 = 0; k2 < 5; k2++){
+		for(int i = 0; i < 5 ; i++ ){
+			for(int j = 0; j < 5; j++){
 				int rand = random.nextInt(5) + 0;
-				Candy = new ImageIcon(Gemname.get(rand).toString());
+				Candy = new ImageIcon(Gemname.get(candyBoard[i][j]).toString());
 				Candy.paintIcon(this, g, CandyX, CandyY);
-				g.drawRect(borderLocationX, borderLocationY, 100, 100);
+			//	g.drawRect(borderLocationX, borderLocationY, 100, 100);
 				CandyX = CandyX + 100;
 			}
 			CandyX = 61;
