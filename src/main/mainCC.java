@@ -21,7 +21,6 @@ public class mainCC {
 	}
 	public static void main(String[] args) {
 		mainCC frame = new mainCC();
-		System.out.println("hi");
 	}
 
 }
