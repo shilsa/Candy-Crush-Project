@@ -80,13 +80,13 @@ public class Rule extends DrawBoard {
 			}
 		
 		if (temp >= 3) {
-			minusRow(y, x, temp);
+			this.minusRow(y, x, temp);
 		}
 	}
 	
 	public void minusRow(int y, int x, int temp) {
 		for (int i = 0; i < temp; i++) {
-			candyBoard[y][i + x] = myMinus(candyBoard[y][i + x]);
+			this.myMinus(candyBoard[y][i + x]);
 		}
 	}
 	
@@ -94,12 +94,75 @@ public class Rule extends DrawBoard {
 		return x > 0 ? - x : x;
 	}
 	
-/*	public void checkCol(int y, int x) {
+	public void checkCol(int y, int x) {
 		final int value = java.lang.Math.abs(candyBoard[y][x]);
 		int k = 0;
 		int temp = 0;
 		for (int i = row - 1; i >= 0; i--) {
-			
+			if (value != java.lang.Math.abs(candyBoard[i][x]) && temp >= 3) {
+				break;
+			}
+			else if (value == java.lang.Math.abs(candyBoard[i][x])) {
+				if (i < y) {
+					y = i;
+				}
+				temp++;
+				k = 0;
+			}
+			else if (temp >= 3 && k == 0) {
+				continue;
+			}
+			else {
+				temp = 0;
+				k++;
+			}
 		}
-	}*/
+		if (temp >= 3) {
+			this.minusCol(y, x, temp);
+		}
+	}
+	public void minusCol(int y, int x, int temp) {
+		for (int i = 0; i < temp; i++) {
+			this.myMinus(candyBoard[y + i][x]);
+		}
+	}
+	
+	public void update() {
+		for (int i = row; i >= 0; i--) {
+			for (int j = 0; j < col; j++) {
+				while (candyBoard[i][j] < 0) {
+					this.updateCandyBoard(i, j);
+				}
+			}
+		}
+	}
+	
+	public void updateCandyBoard(int i, int j) {
+		while (i >= 0) {
+			candyBoard[i][j] = candyBoard[i - 1][j];
+		}
+		candyBoard[0][j] = random.nextInt(5) + 0;
+	}
+	public boolean check() {
+		for (int i = 0; i < row; i++)
+		{
+			for (int j = 0; j < col; j++)
+			{
+				checkRow(i, j);
+				checkCol(i, j);
+			}
+		}
+		
+			
+		
+		for (int i = 0; i < row; i++)
+		{
+			for (int j = 0; j < col; j++)
+			{	
+				if (candyBoard[i][j] < 0)
+					return true;
+			}
+		}	
+	return false;
+	}
 }
