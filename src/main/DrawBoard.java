@@ -17,13 +17,9 @@ public class DrawBoard extends JPanel{
 	final private int col = 5;
 	private ImageIcon BG,Candy;
 	private ImageIcon tittle;
-	private int borderLocationX = 45;
-	private int borderLocationY = 150;
-	private int CandyX = 61;
-	private int CandyY = 165;
 	private static int CandyNumber = 25;
 	protected int[][] candyBoard = new int[10][10];
-	
+	static int t = 0;
 	
 	// create random variable for the string name
 	Random random = new Random();
@@ -57,6 +53,11 @@ public class DrawBoard extends JPanel{
 	}
 	JLabel Score = new JLabel();
 	protected void paintComponent(Graphics g) {
+		int CandyX = 61;
+		int CandyY = 165;
+
+		int borderLocationX = 45;
+		int borderLocationY = 150;
 		super.paintComponent(g); 
 		Gemsname();
 		// draw BG
@@ -79,15 +80,16 @@ public class DrawBoard extends JPanel{
 		// draw the Candy
 		for(int i = 0; i < 5 ; i++ ){
 			for(int j = 0; j < 5; j++){
-				int rand = random.nextInt(5) + 0;
 				Candy = new ImageIcon(Gemname.get(candyBoard[i][j]).toString());
 				Candy.paintIcon(this, g, CandyX, CandyY);
 			//	g.drawRect(borderLocationX, borderLocationY, 100, 100);
 				CandyX = CandyX + 100;
+				
 			}
 			CandyX = 61;
 			CandyY = CandyY + 100;
 		}
 		
 	}
+	
 }
