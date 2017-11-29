@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Random;
 
 public class DrawBoard extends JPanel{
-	final private int row = 5;
-	final private int col = 5;
+	final private int row = 6;
+	final private int col = 8;
 	private ImageIcon BG,Candy;
 	private ImageIcon tittle;
 	private static int CandyNumber = 25;
@@ -42,7 +42,7 @@ public class DrawBoard extends JPanel{
 	void BlockLocation(){	
 		for(int i = 0; i < row; i++){
 			for(int j = 0; j < col; j++){
-				int rand = random.nextInt(5) + 0;
+				int rand = random.nextInt(5) + 1;
 				candyBoard[i][j] = rand;
 	//			while ((candyBoard[i][j] == candyBoard[i][j - 1] && candyBoard[i][j] == candyBoard[i][j - 2]) ||
 		//				(candyBoard[i][j] == candyBoard[i - 1][j] && candyBoard[i][j] == candyBoard[i - 2][j])) {
@@ -55,20 +55,21 @@ public class DrawBoard extends JPanel{
 	protected void paintComponent(Graphics g) {
 		int CandyX = 61;
 		int CandyY = 165;
-
 		int borderLocationX = 45;
 		int borderLocationY = 150;
+		int ttx = 270;
+		int tty = 20;
 		super.paintComponent(g); 
 		Gemsname();
 		// draw BG
-		BG = new ImageIcon("BG1.jpg");
+		BG = new ImageIcon("BG1.png");
 		BG.paintIcon(this, g, 0, 0);
 		// draw tittle
 		tittle = new ImageIcon("TittleImage.png");
-		tittle.paintIcon(this, g, 125, 20);
+		tittle.paintIcon(this, g, ttx, tty);
 		// draw gameplay area
-		for(int counter = 0; counter<5;counter++){
-			for(int i = 0; i < 5; i++){
+		for(int counter = 0; counter<row;counter++){
+			for(int i = 0; i < col; i++){
 		g.setColor(Color.WHITE);
 		g.drawRect(borderLocationX, borderLocationY, 100, 100);
 		g.drawRect(borderLocationX+1, borderLocationY+1, 100, 100);
@@ -78,9 +79,9 @@ public class DrawBoard extends JPanel{
 			borderLocationY = borderLocationY + 100;
 		}
 		// draw the Candy
-		for(int i = 0; i < 5 ; i++ ){
-			for(int j = 0; j < 5; j++){
-				Candy = new ImageIcon(Gemname.get(candyBoard[i][j]).toString());
+		for(int i = 0; i < row ; i++ ){
+			for(int j = 0; j < col; j++){
+				Candy = new ImageIcon(Gemname.get(candyBoard[i][j]-1).toString());
 				Candy.paintIcon(this, g, CandyX, CandyY);
 			//	g.drawRect(borderLocationX, borderLocationY, 100, 100);
 				CandyX = CandyX + 100;
@@ -89,7 +90,8 @@ public class DrawBoard extends JPanel{
 			CandyX = 61;
 			CandyY = CandyY + 100;
 		}
-		
+		System.out.println(t++);
+		repaint();
 	}
 	
 }

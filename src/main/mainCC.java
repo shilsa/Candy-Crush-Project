@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 
 
 public class mainCC {
-	public static final int WIDTH = 600, HEIGHT = 750;
+	public static final int WIDTH = 890, HEIGHT = 820;
 	public mainCC(){
 		JFrame frame = new JFrame("Candy Crush");
 		DrawBoard draw = new DrawBoard();
