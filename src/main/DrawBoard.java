@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Random;
 
 public class DrawBoard extends JPanel{
-	final private int row = 6;
-	final private int col = 8;
+	static final protected int row = 6;
+	static final protected int col = 8;
 	private ImageIcon BG,Candy;
 	private ImageIcon tittle;
 	private static int CandyNumber = 25;
-	protected int[][] candyBoard = new int[10][10];
+	public static int[][] candyBoard = new int[row][col];
 	static int t = 0;
 	
 	// create random variable for the string name
@@ -78,7 +78,28 @@ public class DrawBoard extends JPanel{
 			borderLocationX = 45;
 			borderLocationY = borderLocationY + 100;
 		}
+		
+		Rule rule = new Rule();
+		while (rule.check()) {
+			int m = 0;
+			for (int i = 0; i < row; i++) {
+				for (int j = 0; j < col; j++) {
+					System.out.print(candyBoard[i][j] + " ");
+				}
+				System.out.println();
+			}
+			rule.update();
+			System.out.println("TIME " + m++);
+		}
+		
 		// draw the Candy
+		
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				System.out.print(candyBoard[i][j] + " ");
+			}
+			System.out.println();
+		}
 		for(int i = 0; i < row ; i++ ){
 			for(int j = 0; j < col; j++){
 				Candy = new ImageIcon(Gemname.get(candyBoard[i][j]-1).toString());
@@ -90,8 +111,26 @@ public class DrawBoard extends JPanel{
 			CandyX = 61;
 			CandyY = CandyY + 100;
 		}
+
+	//	rule.set();
+
+//		candyBoard[0][0] = 1;
+//		for(int i = 0; i < row ; i++ ){
+	//		for(int j = 0; j < col; j++){
+//				Candy = new ImageIcon(Gemname.get(candyBoard[i][j]).toString());
+//				Candy.paintIcon(this, g, CandyX, CandyY);
+//				g.drawRect(borderLocationX, borderLocationY, 100, 100);
+//				CandyX = CandyX + 100;
+	//			System.out.print(candyBoard[i][j] + " ");
+				
+		//	}
+			//System.out.println();
+	//		CandyX = 61;
+		//	CandyY = CandyY + 100;
+//		}
 		System.out.println(t++);
-		repaint();
-	}
-	
+	//	repaint();
+	}	
 }
+
+
