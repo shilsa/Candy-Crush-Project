@@ -114,7 +114,7 @@ public class DrawBoard extends JPanel{
 		int CandyMovingY = 719;
 		int CandyYSpeed = 2;
 		
-		if(CandyMovingY = 165) 
+		if(CandyMovingY = Y) 
 		
 	}
 
