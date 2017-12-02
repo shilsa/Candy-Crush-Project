@@ -170,7 +170,7 @@ public class DrawBoard extends JPanel{
 			CandyX = 61;
 			CandyY = CandyY + space;
 		}
-		//repaint();
+		repaint();
 	}
 
 	//	rule.set();
