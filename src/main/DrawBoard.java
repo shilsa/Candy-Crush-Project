@@ -142,12 +142,12 @@ public class DrawBoard extends JPanel{
 	
 		// draw the Candy
 		CandyMoving(g);
-//		for (int i = 0; i < row; i++) {
-//			for (int j = 0; j < col; j++) {
-//				System.out.print(candyBoard[i][j] + " ");
-//			}
-//			System.out.println();
-//		}
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				System.out.print(candyBoard[i][j] + " ");
+			}
+			System.out.println();
+		}
 		for(int k = 0; k <= i ; k++ ){
 			for(int l = 0; l <= j; l++){
 				Candy = new ImageIcon(Gemname.get(candyBoard[k][l]-1).toString());
@@ -188,15 +188,12 @@ public class DrawBoard extends JPanel{
 		super.paintComponents(p);
 		int CandyX = X;
 		int CandyY = Y;
-		Rule rule = new Rule();
-		while (rule.check()) rule.update();
 		int CandyYSpeed = 10;
 		if(i < 6){
 		Candy = new ImageIcon(Gemname.get(candyBoard[i][j]-1).toString());
 		Candy.paintIcon(this, p, (CandyMovingX + (j*space)), CandyMovingY);
 		CandyMovingY = CandyMovingY - CandyYSpeed;
 		}
-		System.out.println(t + " lol");
 		if(t < CandyNumber){
 		if(CandyMovingY != Y){
 			try {
@@ -218,7 +215,7 @@ public class DrawBoard extends JPanel{
 				if(i == 6){
 					i--;
 				}
-				System.out.println(i);
+				//System.out.println(i);
 			}
 			repaint();
 		}
