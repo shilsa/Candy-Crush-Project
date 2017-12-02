@@ -13,13 +13,14 @@ import java.util.List;
 import java.util.Random;
 
 public class DrawBoard extends JPanel{
-	final private int row = 6;
-	final private int col = 8;
+	final private int row = 5;
+	final private int col = 7;
 	private ImageIcon BG,Candy;
 	private ImageIcon tittle;
 	private static int CandyNumber = 25;
 	protected int[][] candyBoard = new int[10][10];
 	static int t = 0;
+	int space = 100;
 	
 	// create random variable for the string name
 	Random random = new Random();
@@ -51,13 +52,23 @@ public class DrawBoard extends JPanel{
 		}
 	}
 	}
+	// Make the Candy moving transition at first
+	void CandyMoving(Graphics p){
+		int CandyMovingX = 61;
+		int CandyMovingY = 719;
+		int CandyYSpeed = 2;
+		
+		if(CandyMovingY = 165) 
+		
+	}
+	
 	JLabel Score = new JLabel();
 	protected void paintComponent(Graphics g) {
 		int CandyX = 61;
 		int CandyY = 165;
 		int borderLocationX = 45;
 		int borderLocationY = 150;
-		int ttx = 270;
+		int ttx = 215;
 		int tty = 20;
 		super.paintComponent(g); 
 		Gemsname();
@@ -73,25 +84,24 @@ public class DrawBoard extends JPanel{
 		g.setColor(Color.WHITE);
 		g.drawRect(borderLocationX, borderLocationY, 100, 100);
 		g.drawRect(borderLocationX+1, borderLocationY+1, 100, 100);
-		borderLocationX = borderLocationX + 100;
+		borderLocationX = borderLocationX + space;
 		}
 			borderLocationX = 45;
-			borderLocationY = borderLocationY + 100;
+			borderLocationY = borderLocationY + space;
 		}
 		// draw the Candy
 		for(int i = 0; i < row ; i++ ){
 			for(int j = 0; j < col; j++){
 				Candy = new ImageIcon(Gemname.get(candyBoard[i][j]-1).toString());
+				
 				Candy.paintIcon(this, g, CandyX, CandyY);
-			//	g.drawRect(borderLocationX, borderLocationY, 100, 100);
-				CandyX = CandyX + 100;
+				CandyX = CandyX + space;
 				
 			}
 			CandyX = 61;
-			CandyY = CandyY + 100;
+			CandyY = CandyY + space;
 		}
-		System.out.println(t++);
-		repaint();
+		//repaint();
 	}
 	
 }
