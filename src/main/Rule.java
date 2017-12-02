@@ -184,7 +184,7 @@ public class Rule extends DrawBoard {
 		}
 	}
 	
-	public void attạch() {	
+	public void attach() {	
 	//	repaint();
 //		System.out.println("AHIHI");
 	//	System.out.println(super.mouseClicked);
