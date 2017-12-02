@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Random;
 
 public class DrawBoard extends JPanel{
-
 	static final protected int row = 6;
 	static final protected int col = 8;
 	static protected int  mouseClicked = -1;
@@ -29,7 +28,6 @@ public class DrawBoard extends JPanel{
 	private static int CandyNumber = 25;
 	public static int[][] candyBoard = new int[row][col];
 	static int t = 0;
-	int space = 100;
 	
 	
 	static int a = 0;
@@ -108,16 +106,6 @@ public class DrawBoard extends JPanel{
 	}
 		
 	}
-	// Make the Candy moving transition at first
-	void CandyMoving(Graphics p){
-		int CandyMovingX = 61;
-		int CandyMovingY = 719;
-		int CandyYSpeed = 2;
-		
-		if(CandyMovingY = 165) 
-		
-	}
-
 	
 	JLabel Score = new JLabel();
 	
@@ -134,21 +122,16 @@ public class DrawBoard extends JPanel{
 		super.paintComponent(g); 
 		Gemsname();
 		// draw BG
-				this.BG = new ImageIcon("BG1.png");
-				BG.paintIcon(this, g, 0, 0);
-		//draw TITTLE
-		this.tittle = new ImageIcon("TImg.png");
-		tittle.paintIcon(this, g, ttx, tty);
-		//draw GRID
+
 		for(int counter = 0; counter<row;counter++){
 			for(int i = 0; i < col; i++){
 		g.setColor(Color.WHITE);
 		g.drawRect(borderLocationX, borderLocationY, 100, 100);
 		g.drawRect(borderLocationX+1, borderLocationY+1, 100, 100);
-		borderLocationX = borderLocationX + space;
+		borderLocationX = borderLocationX + 100;
 		}
 			borderLocationX = 45;
-			borderLocationY = borderLocationY + space;
+			borderLocationY = borderLocationY + 100;
 		}
 	
 		// draw the Candy
@@ -162,17 +145,14 @@ public class DrawBoard extends JPanel{
 		for(int i = 0; i < row ; i++ ){
 			for(int j = 0; j < col; j++){
 				Candy = new ImageIcon(Gemname.get(candyBoard[i][j]-1).toString());
-				
 				Candy.paintIcon(this, g, CandyX, CandyY);
-				CandyX = CandyX + space;
+			//	g.drawRect(borderLocationX, borderLocationY, 100, 100);
+				CandyX = CandyX + 100;
 				
 			}
 			CandyX = 61;
-			CandyY = CandyY + space;
+			CandyY = CandyY + 100;
 		}
-		//repaint();
-	}
-
 	//	rule.set();
 
 //		candyBoard[0][0] = 1;
@@ -189,11 +169,11 @@ public class DrawBoard extends JPanel{
 	//		CandyX = 61;
 		//	CandyY = CandyY + 100;
 //		}
-	
+		System.out.println(t++);
 	
 //		rule.attạch();
-	//	repaint();
-	//}	
+		repaint();
+	}	
 
 }
 
