@@ -22,16 +22,17 @@ public class DrawBoard extends JPanel{
 	static protected int  mouseClicked = -1;
 	static protected int mouseX = 0;
 	static protected int mouseY = 0;
-	private ImageIcon BG,Candy;
-	private ImageIcon tittle;
-	private int X = 61;
+    ImageIcon BG = new ImageIcon("BG1.png");
+	ImageIcon tittle = new ImageIcon("TImg.png");
+	private ImageIcon Candy;
+	private int X = 60;
 	private int Y = 165;
-	private static int CandyNumber = 25;
+	private int MovingY = 815;
+	private static int CandyNumber = 48;
 	public static int[][] candyBoard = new int[row][col];
-	static int t = 0;
 	int space = 100;
-	
-	
+	int CandyMovingX = X;
+	int CandyMovingY = MovingY;
 	static int a = 0;
 	static int b = 0;
 	static int value = 0;
@@ -109,20 +110,11 @@ public class DrawBoard extends JPanel{
 		
 	}
 	// Make the Candy moving transition at first
-	void CandyMoving(Graphics p){
-		int CandyMovingX = 61;
-		int CandyMovingY = 719;
-		int CandyYSpeed = 2;
-		
-		if(CandyMovingY = Y) 
-		
-	}
 
-	
-	JLabel Score = new JLabel();
 	
 	
 	protected void paintComponent(Graphics g) {
+		super.paintComponent(g); 
 		Rule rule = new Rule();
 		while (rule.check()) rule.update();
 		int CandyX = X;
@@ -131,13 +123,10 @@ public class DrawBoard extends JPanel{
 		int borderLocationY = 150;
 		int ttx = 270;
 		int tty = 20;
-		super.paintComponent(g); 
 		Gemsname();
 		// draw BG
-				this.BG = new ImageIcon("BG1.png");
-				BG.paintIcon(this, g, 0, 0);
+		BG.paintIcon(this, g, 0, 0);
 		//draw TITTLE
-		this.tittle = new ImageIcon("TImg.png");
 		tittle.paintIcon(this, g, ttx, tty);
 		//draw GRID
 		for(int counter = 0; counter<row;counter++){
@@ -152,22 +141,21 @@ public class DrawBoard extends JPanel{
 		}
 	
 		// draw the Candy
-		
-		for (int i = 0; i < row; i++) {
-			for (int j = 0; j < col; j++) {
-				System.out.print(candyBoard[i][j] + " ");
-			}
-			System.out.println();
-		}
-		for(int i = 0; i < row ; i++ ){
-			for(int j = 0; j < col; j++){
-				Candy = new ImageIcon(Gemname.get(candyBoard[i][j]-1).toString());
-				
+		CandyMoving(g);
+//		for (int i = 0; i < row; i++) {
+//			for (int j = 0; j < col; j++) {
+//				System.out.print(candyBoard[i][j] + " ");
+//			}
+//			System.out.println();
+//		}
+		for(int k = 0; k <= i ; k++ ){
+			for(int l = 0; l <= j; l++){
+				Candy = new ImageIcon(Gemname.get(candyBoard[k][l]-1).toString());
 				Candy.paintIcon(this, g, CandyX, CandyY);
 				CandyX = CandyX + space;
 				
 			}
-			CandyX = 61;
+			CandyX = X;
 			CandyY = CandyY + space;
 		}
 		repaint();
@@ -194,7 +182,54 @@ public class DrawBoard extends JPanel{
 //		rule.attạch();
 	//	repaint();
 	//}	
+	int i = 0, j = 0, t = 0;
 
+	void CandyMoving(Graphics p){
+		super.paintComponents(p);
+		int CandyX = X;
+		int CandyY = Y;
+		Rule rule = new Rule();
+		while (rule.check()) rule.update();
+		int CandyYSpeed = 10;
+		if(i < 6){
+		Candy = new ImageIcon(Gemname.get(candyBoard[i][j]-1).toString());
+		Candy.paintIcon(this, p, (CandyMovingX + (j*space)), CandyMovingY);
+		CandyMovingY = CandyMovingY - CandyYSpeed;
+		}
+		System.out.println(t + " lol");
+		if(t < CandyNumber){
+		if(CandyMovingY != Y){
+			try {
+				Thread.sleep(1);
+				repaint();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		if(CandyMovingY == (Y + (i*space))){
+			CandyMovingY = MovingY;
+			t++;
+			j++;
+			
+			if(((t%8) == 0) && (t != 0)){
+				if(t != CandyNumber) j = 0;
+				if (j == 8) j--;
+				i++;
+				if(i == 6){
+					i--;
+				}
+				System.out.println(i);
+			}
+			repaint();
+		}
+				}
+		
+//		repaint();
+		
+		//if(CandyMovingY = Y) 
+		
+		
+	}
 }
 
 
