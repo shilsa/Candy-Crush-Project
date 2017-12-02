@@ -184,25 +184,5 @@ public class Rule extends DrawBoard {
 		}
 	}
 	
-	public void attạch() {	
-	//	repaint();
-//		System.out.println("AHIHI");
-	//	System.out.println(super.mouseClicked);
-//		if (mouseClicked == 0) {
-	//		value = candyBoard[mouseY][mouseX];
-//			b = mouseY;
-	//		a = mouseX;
-/*			System.out.println("AHIHI " +  value);
-		}
-		else if (mouseClicked == 1) {
-			System.out.println("AHIHI " + candyBoard[mouseY][mouseX]);
-			candyBoard[b][a] =  getCandyBoard(mouseY, mouseX);
-			candyBoard[mouseY][mouseX] = value;
-		}
-		System.out.println("AHIHI " +  value);
-		candyBoard[mouseY][mouseX] = value;
-//		super.paintComponent(null);*/
-//		while (check() == true) update();
-		repaint();
-	}
+
 }
