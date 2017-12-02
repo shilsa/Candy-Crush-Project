@@ -192,7 +192,7 @@ public class DrawBoard extends JPanel{
 	
 	
 //		rule.attạch();
-		repaint();
+	//	repaint();
 	//}	
 
 }
