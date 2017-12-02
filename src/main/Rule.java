@@ -8,6 +8,10 @@ import javax.swing.JPanel;
 import java.lang.Math;
 
 public class Rule extends DrawBoard {
+	static int a = 0;
+	static int b = 0;
+	static int value = 0;
+	static int temp = 0;
 	
 	Random random = new Random();
 	
@@ -32,19 +36,6 @@ public class Rule extends DrawBoard {
 	}
 	
 	*/
-	private int rand(int min, int max) {
-		try {
-			Random rn = new Random();
-			int range = max - min + 1;
-			int randomNum = min + rn.nextInt(range);
-			return randomNum;
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-			return -1;
-		}
-	}
-	
 	public void checkRow(int y, int x) {
 		int value = java.lang.Math.abs(candyBoard[y][x]);
 		int k = 0;
@@ -57,11 +48,17 @@ public class Rule extends DrawBoard {
 			else if (value == java.lang.Math.abs(candyBoard[y][i])) {
 				if (i < x) {
 					x = i;
-					temp++;
-					k = 0;
 				}
+				temp++;
+				k = 0;
 			}
-			else if (temp >= 3 && k == 0) {
+			else if (value != java.lang.Math.abs(candyBoard[y][i]) && temp < 3) {
+				k++;
+				temp = 0;
+				continue;
+			}
+			else if (value == java.lang.Math.abs(candyBoard[y][i]) &&  temp >= 3 && k == 0) {
+				temp++;
 				continue;
 			}
 			else {
@@ -107,13 +104,21 @@ public class Rule extends DrawBoard {
 				}
 				temp++;
 				k = 0;
+				continue;
 			}
-			else if (temp >= 3 && k == 0) {
+			else if (value != java.lang.Math.abs(candyBoard[i][x]) && temp < 3) {
+				k++;
+				temp = 0;
+				continue;
+			}
+			else if (value == java.lang.Math.abs(candyBoard[i][x]) && temp >= 3 && k == 0) {
+				temp++;
 				continue;
 			}
 			else {
 				temp = 0;
 				k++;
+				continue;
 			}
 		}
 		if (temp >= 3) {
@@ -177,5 +182,27 @@ public class Rule extends DrawBoard {
 				candyBoard[i][j] = 1;
 			}
 		}
+	}
+	
+	public void attạch() {	
+	//	repaint();
+//		System.out.println("AHIHI");
+	//	System.out.println(super.mouseClicked);
+//		if (mouseClicked == 0) {
+	//		value = candyBoard[mouseY][mouseX];
+//			b = mouseY;
+	//		a = mouseX;
+/*			System.out.println("AHIHI " +  value);
+		}
+		else if (mouseClicked == 1) {
+			System.out.println("AHIHI " + candyBoard[mouseY][mouseX]);
+			candyBoard[b][a] =  getCandyBoard(mouseY, mouseX);
+			candyBoard[mouseY][mouseX] = value;
+		}
+		System.out.println("AHIHI " +  value);
+		candyBoard[mouseY][mouseX] = value;
+//		super.paintComponent(null);*/
+//		while (check() == true) update();
+		repaint();
 	}
 }
