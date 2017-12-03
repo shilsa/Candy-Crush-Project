@@ -16,7 +16,9 @@ import java.util.List;
 import java.util.Random;
 
 public class DrawBoard extends JPanel{
-	int i = 0, j = 0, t = 0, m = 0;
+	int candySpeed = 10;
+	int candySpeed2 = 10;
+	static int i = 0, j = 0, t = 0, m = 0;
 	static final protected int row = 6;
 	static final protected int col = 8;
 	static protected int  mouseClicked = -1;
@@ -37,7 +39,10 @@ public class DrawBoard extends JPanel{
 	static int b = 0;
 	static int value = 0;
 	static int temp = 0;
-	
+	static double A = a;
+	static double B = b;
+	static double MouseX = mouseX;
+	static double MouseY = mouseY;
 
 	// create random variable for the string name
 	Random random = new Random();
@@ -141,8 +146,13 @@ public class DrawBoard extends JPanel{
 		}
 	
 		// draw the Candy
-		CandyMoving(g);
-		CandyPrinting(g);
+		if (i == row - 1 && j == col - 1) Animation(g);
+		else {
+			CandyMoving(g);
+			CandyPrinting(g);
+			System.out.println("I = " + i + " J = " + j );
+		}
+		
 		repaint();
 	}
 
@@ -190,7 +200,7 @@ public class DrawBoard extends JPanel{
 	}
 	public void CandyPrinting(Graphics g) {
 		try {
-			Thread.sleep(2);
+			Thread.sleep(0);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -228,6 +238,67 @@ public class DrawBoard extends JPanel{
 			CandyX = X;
 			CandyY = CandyY + space;
 		}
+	}
+	
+
+	
+	public void Animation(Graphics g) {
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		int CandyX = X;
+		int CandyY = Y;
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				Candy = new ImageIcon(Gemname.get(candyBoard[i][j] - 1).toString());
+				if (mouseClicked < 1) {					
+					Candy.paintIcon(this, g, CandyX, CandyY);
+					CandyX += space;
+					candySpeed = 0;
+					candySpeed2 = 0;
+				}
+				else {
+					if (i == mouseY && j == mouseX) CandyX += space ;
+					else if ((i == b)  && (j == a)) CandyX += space;
+					else {
+						Candy.paintIcon(this, g, CandyX, CandyY);
+						CandyX += space;
+						}
+					A = a;
+					B = b;
+					MouseX = mouseX;
+					MouseY = mouseY;
+					if (A == mouseX) {
+						if (java.lang.Math.abs(candySpeed) != 100) {
+							Candy = new ImageIcon(Gemname.get(candyBoard[mouseY][mouseX] - 1).toString());
+							Candy.paintIcon(this, g,X + (int) A * space,Y + (int) B * space + (int)candySpeed);
+							if (Y + B * space + (int)candySpeed < Y + MouseY * space) candySpeed += 1;
+							else candySpeed -= 1;
+						}
+						else if (java.lang.Math.abs(candySpeed) == 100) {
+							Candy = new ImageIcon(Gemname.get(candyBoard[mouseY][mouseX] - 1).toString());
+							Candy.paintIcon(this, g,X + (int) A * space,Y + (int) B * space + (int)candySpeed);
+						}
+						if (java.lang.Math.abs(candySpeed2) != 100) {
+							Candy = new ImageIcon(Gemname.get(candyBoard[(int)B][(int)A] - 1).toString());
+							Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2);
+							if (Y + MouseY * space + (int)candySpeed2 < Y + B * space) candySpeed2 += 1;
+							else candySpeed2 -= 1;
+						}
+						else if (java.lang.Math.abs(candySpeed2) == 100) {
+							Candy = new ImageIcon(Gemname.get(candyBoard[(int)B][(int)A] - 1).toString());
+							Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2);
+						}
+					}
+				}
+			}
+			CandyX = X;
+			CandyY += space;
+		}
+		repaint();
 	}
 }
 
