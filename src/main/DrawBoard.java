@@ -142,7 +142,7 @@ public class DrawBoard extends JPanel{
 	
 		// draw the Candy
 		CandyMoving(g);
-	
+		CandyPrinting(g);
 		repaint();
 	}
 
@@ -186,8 +186,7 @@ public class DrawBoard extends JPanel{
 	}
 		
 //		repaint
-		m++;
-			CandyPrinting(p);
+			
 	}
 	public void CandyPrinting(Graphics g) {
 		try {
