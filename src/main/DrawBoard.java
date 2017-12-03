@@ -293,6 +293,29 @@ public class DrawBoard extends JPanel{
 							Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2);
 						}
 					}
+					
+						else if (B == mouseY) {
+					if (java.lang.Math.abs(candySpeed) != 100) {
+						Candy = new ImageIcon(Gemname.get(candyBoard[mouseY][mouseX] - 1).toString());
+						Candy.paintIcon(this, g,X + (int) A * space + (int)candySpeed,Y + (int) B * space);
+						if (Y + A * space + (int)candySpeed < Y + MouseX * space) candySpeed += 1;
+						else candySpeed -= 1;
+					}
+					else if (java.lang.Math.abs(candySpeed) == 100) {
+						Candy = new ImageIcon(Gemname.get(candyBoard[mouseY][mouseX] - 1).toString());
+						Candy.paintIcon(this, g,X + (int) A * space + (int)candySpeed,Y + (int) B * space);
+					}
+					if (java.lang.Math.abs(candySpeed2) != 100) {
+						Candy = new ImageIcon(Gemname.get(candyBoard[(int)B][(int)A] - 1).toString());
+						Candy.paintIcon(this, g,X + (int) MouseX * space + (int)candySpeed2,Y + (int) MouseY * space);
+						if (Y + MouseX * space + (int)candySpeed2 < Y + A * space) candySpeed2 += 1;
+						else candySpeed2 -= 1;
+					}
+					else if (java.lang.Math.abs(candySpeed2) == 100) {
+						Candy = new ImageIcon(Gemname.get(candyBoard[(int)B][(int)A] - 1).toString());
+						Candy.paintIcon(this, g,X + (int) MouseX * space +(int)candySpeed2,Y + (int) MouseY * space );
+					}
+				}
 				}
 			}
 			CandyX = X;
