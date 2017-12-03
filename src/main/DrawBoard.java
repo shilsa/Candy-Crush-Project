@@ -185,17 +185,18 @@ public class DrawBoard extends JPanel{
 		}
 	}
 		
-//		repaint();
+//		repaint
+		m++;
 			CandyPrinting(p);
 	}
 	public void CandyPrinting(Graphics g) {
-	/*	try {
-			Thread.sleep(10);
+		try {
+			Thread.sleep(2);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	*/	
+	
 		int CandyX = X;
 		int CandyY = Y;
 		for (int i = 0; i < row; i++) {
@@ -204,13 +205,27 @@ public class DrawBoard extends JPanel{
 			}
 			System.out.println();
 		}
-		for(int k = 0; k <= i ; k++ ){
-			for(int l = 0; l <= j; l++){
+		for(int k = 0; k <= i; k++ ){
+			for(int l = 0; l < col; l++){
 				Candy = new ImageIcon(Gemname.get(candyBoard[k][l]-1).toString());
-				Candy.paintIcon(this, g, CandyX, CandyY);
+				if (l < j) {
+					Candy.paintIcon(this, g, CandyX, CandyY);
+				}
+				else if (l == j) {
+					if (i - k >= 1) Candy.paintIcon(this, g, CandyX, CandyY);
+					else if (CandyMovingY <= Y) Candy.paintIcon(this, g, CandyX, CandyY);
+					m = 0;
+				}
+				else if (l > j) {
+					if (i - k >= 1) Candy.paintIcon(this, g, CandyX, CandyY);
+				}
+				
+				else continue;
+				
 				CandyX = CandyX + space;
 				
 			}
+		//	if (k == i) Candy.paintIcon(this, g, CandyX, CandyY);
 			CandyX = X;
 			CandyY = CandyY + space;
 		}
