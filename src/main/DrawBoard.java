@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Random;
 
 public class DrawBoard extends JPanel{
-
+	int i = 0, j = 0, t = 0, m = 0;
 	static final protected int row = 6;
 	static final protected int col = 8;
 	static protected int  mouseClicked = -1;
@@ -142,6 +142,62 @@ public class DrawBoard extends JPanel{
 	
 		// draw the Candy
 		CandyMoving(g);
+	
+		repaint();
+	}
+
+	
+
+	void CandyMoving(Graphics p){
+		super.paintComponents(p);
+		int CandyX = X;
+		int CandyY = Y;
+		int CandyYSpeed = 10;
+		if (i < row){
+		Candy = new ImageIcon(Gemname.get(candyBoard[i][j]-1).toString());
+		Candy.paintIcon(this, p, (CandyMovingX + (j*space)), CandyMovingY);
+		CandyMovingY = CandyMovingY - CandyYSpeed;
+		}
+		if(t < CandyNumber){
+		//	if(CandyMovingY != Y){
+	//			try {
+//					Thread.sleep(1);
+//					repaint();
+	//			} catch (InterruptedException e) {
+	//				e.printStackTrace();
+		//		}
+	//		}
+			if(CandyMovingY == (Y + (i*space))){
+				CandyMovingY = MovingY;
+				t++;
+				j++;
+			
+				if(((t % col ) == 0) && (t != 0)){
+					if(t != CandyNumber) j = 0;
+					if (j == col) j--;
+					i++;
+					if(i == row){
+						i--;
+					}
+				//System.out.println(i);
+			}
+	//		repaint();
+		}
+	}
+		
+//		repaint();
+			CandyPrinting(p);
+	}
+	public void CandyPrinting(Graphics g) {
+	/*	try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	*/	
+		int CandyX = X;
+		int CandyY = Y;
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
 				System.out.print(candyBoard[i][j] + " ");
@@ -158,74 +214,6 @@ public class DrawBoard extends JPanel{
 			CandyX = X;
 			CandyY = CandyY + space;
 		}
-		repaint();
-	}
-
-	//	rule.set();
-
-//		candyBoard[0][0] = 1;
-//		for(int i = 0; i < row ; i++ ){
-	//		for(int j = 0; j < col; j++){
-//				Candy = new ImageIcon(Gemname.get(candyBoard[i][j]).toString());
-//				Candy.paintIcon(this, g, CandyX, CandyY);
-//				g.drawRect(borderLocationX, borderLocationY, 100, 100);
-//				CandyX = CandyX + 100;
-	//			System.out.print(candyBoard[i][j] + " ");
-				
-		//	}
-			//System.out.println();
-	//		CandyX = 61;
-		//	CandyY = CandyY + 100;
-//		}
-	
-	
-//		rule.attạch();
-	//	repaint();
-	//}	
-	int i = 0, j = 0, t = 0;
-
-	void CandyMoving(Graphics p){
-		super.paintComponents(p);
-		int CandyX = X;
-		int CandyY = Y;
-		int CandyYSpeed = 10;
-		if(i < 6){
-		Candy = new ImageIcon(Gemname.get(candyBoard[i][j]-1).toString());
-		Candy.paintIcon(this, p, (CandyMovingX + (j*space)), CandyMovingY);
-		CandyMovingY = CandyMovingY - CandyYSpeed;
-		}
-		if(t < CandyNumber){
-		if(CandyMovingY != Y){
-			try {
-				Thread.sleep(1);
-				repaint();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		if(CandyMovingY == (Y + (i*space))){
-			CandyMovingY = MovingY;
-			t++;
-			j++;
-			
-			if(((t%8) == 0) && (t != 0)){
-				if(t != CandyNumber) j = 0;
-				if (j == 8) j--;
-				i++;
-				if(i == 6){
-					i--;
-				}
-				//System.out.println(i);
-			}
-			repaint();
-		}
-				}
-		
-//		repaint();
-		
-		//if(CandyMovingY = Y) 
-		
-		
 	}
 }
 
