@@ -263,6 +263,12 @@ public class DrawBoard extends JPanel{
 		int CandyY = Y;
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
+		/*		try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}*/
 				Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[i][j]-1)).toString());
 				if (mouseClicked < 1) {					
 					Candy.paintIcon(this, g, CandyX, CandyY);
