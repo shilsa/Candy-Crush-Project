@@ -20,6 +20,7 @@ public class mainCC extends Applet {
 		JFrame frame = new JFrame("Candy Crush");
 		DrawBoard draw = new DrawBoard();
 		draw.BlockLocation();
+		draw.setTemp2();
 //		draw.paintComponent();
 		frame.setVisible(true);
 		frame.setSize(WIDTH,HEIGHT);
@@ -27,6 +28,8 @@ public class mainCC extends Applet {
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(draw);
+		Rule rule = new Rule();
+		while(rule.check()) rule.update();
 		
 	}
 	public static void main(String[] args) {
