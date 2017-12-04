@@ -291,6 +291,7 @@ public class DrawBoard extends JPanel{
 						else if (java.lang.Math.abs(candySpeed) == 100) {
 							Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[mouseY][mouseX] - 1)).toString());
 							Candy.paintIcon(this, g,X + (int) A * space,Y + (int) B * space + (int)candySpeed);
+					//		Thread.sleep(1000);
 						}
 						if (java.lang.Math.abs(candySpeed2) != 100) {
 							Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[(int)B][(int)A] - 1)).toString());
@@ -301,6 +302,7 @@ public class DrawBoard extends JPanel{
 						else if (java.lang.Math.abs(candySpeed2) == 100) {
 							Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[(int)B][(int)A] - 1)).toString());
 							Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2);
+						//	Thread.sleep(1000);
 						}
 					}
 					
@@ -314,6 +316,7 @@ public class DrawBoard extends JPanel{
 					else if (java.lang.Math.abs(candySpeed) == 100) {
 						Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[mouseY][mouseX] - 1)).toString());
 						Candy.paintIcon(this, g,X + (int) A * space + (int)candySpeed,Y + (int) B * space);
+					//	Thread.sleep(1000);
 					}
 					if (java.lang.Math.abs(candySpeed2) != 100) {
 						Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[(int)B][(int)A] - 1)).toString());
@@ -324,6 +327,7 @@ public class DrawBoard extends JPanel{
 					else if (java.lang.Math.abs(candySpeed2) == 100) {
 						Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[(int)B][(int)A] - 1)).toString());
 						Candy.paintIcon(this, g,X + (int) MouseX * space +(int)candySpeed2,Y + (int) MouseY * space );
+				//		Thread.sleep(1000);
 					}
 				}
 			
@@ -333,8 +337,10 @@ public class DrawBoard extends JPanel{
 			CandyX = X;
 			CandyY += space;
 		}
-		repaint();
-	}
+	//	repaint()
+		
+		}
+	
 	static int  temp2[] = new int[col];
 	public void setTemp2() {
 		for (int i = 0; i < col; i++) temp2[i] = 0;
