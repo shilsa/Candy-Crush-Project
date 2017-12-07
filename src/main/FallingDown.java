@@ -6,7 +6,7 @@ public class FallingDown extends DrawBoard {
 	public FallingDown() {
 		this.setTemp();
 		this.setUpCandyStatus();
-		for (int j = 0; j < col; j++) {
+		for (int j = col - 1; j >= 0; j--) {
 			int temp = 0;
 			for (int i = row - 1; i >= 0; i--) {
 				if (candyBoard[i][j] < 0) {

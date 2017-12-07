@@ -259,7 +259,7 @@ public class DrawBoard extends JPanel{
 	
 	public void Animation(Graphics g) {
 		try {
-			Thread.sleep(10);
+			Thread.sleep(0);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -275,6 +275,8 @@ public class DrawBoard extends JPanel{
 		Rule rule = new Rule();
 		int CandyX = X;
 		int CandyY = Y - space * (row / 2);
+		
+		
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
 				System.out.print(candyBoard[i][j] + " ");
@@ -300,15 +302,16 @@ public class DrawBoard extends JPanel{
 					else if ((i == b)  && (j == a)) CandyX += space;
 					else if (fallingDown.candyStatus[i][j] == -1) CandyX += space;
 					else if (fallingDown.candyStatus[i][j] == -2) {
-		if (CandyY >= Y)				Candy.paintIcon(this, g, CandyX, CandyY);
+					if (CandyY >= Y)	Candy.paintIcon(this, g, CandyX, CandyY);
 						CandyX += space;
 					}
 					
 					else if (fallingDown.candyStatus[i][j] > 0) {
 						if (temp3[i][j] < fallingDown.candyStatus[i][j]){
 				/*		if (!fallingDown.checkCandyStatus()) */{
-						Candy.paintIcon(this, g, CandyX, CandyY + temp3[i][j]);
+			if (CandyY + temp3[i][j] >= Y - space / 2)	{Candy.paintIcon(this, g, CandyX, CandyY + temp3[i][j]);
 							CandyX += space;
+			}
 							temp3[i][j] += 5;
 			//				System.out.println("TEMP3  " + temp3[i][j] );
 							for (int a = 0; a < row; a++) {
@@ -318,13 +321,17 @@ public class DrawBoard extends JPanel{
 									}
 									if (temp3[a][b] >= fallingDown.maxCandyStatus()) {
 					//					System.out.println("HAS UPDATED");
-										if (rule.check()) rule.update();
+										if (rule.check()) {
+											rule.update();
+											setTemp3();
+										}
 									}
 										
 								}
 							}
 						}
 						}
+			//			else if (temp3[i][j] == fallingDown.candyStatus[i][j] ) Candy.paintIcon(this, g, CandyX, CandyY + temp3[i][j]);
 					}
 				
 						A = a;
