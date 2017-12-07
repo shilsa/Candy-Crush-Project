@@ -40,14 +40,17 @@ public class Rule extends DrawBoard {
 		int value = java.lang.Math.abs(candyBoard[y][x]);
 		int k = 0;
 		int temp = 0;
-		for (int i = 0; i < col; i++) {
+		int m = 0;
+		for (int i = col - 1; i >= 0; i--) {
 			if (value != java.lang.Math.abs(candyBoard[y][i]) && temp >= 3) {
 				k++;
+				m = i + 1;
 				break;
 			}
 			else if (value == java.lang.Math.abs(candyBoard[y][i])) {
 				if (i < x) {
 					x = i;
+					
 				}
 				temp++;
 				k = 0;
@@ -68,14 +71,15 @@ public class Rule extends DrawBoard {
 			}
 		
 		if (temp >= 3) {
-			System.out.println("FOUND");
-			this.minusRow(y, x, temp);
+	//		System.out.println("FOUND");
+		if (m != 0) 	this.minusRow(y, m, temp);
+		else this.minusRow(y, x, temp);
 		}
 	}
 	
 	public void minusRow(int y, int x, int temp) {
 		for (int i = 0; i < temp; i++) {
-			System.out.println("HAS MINUS ROW");
+	//		System.out.println("HAS MINUS ROW");
 			candyBoard[y][i + x] = myMinus(candyBoard[y][i + x]);
 		}
 	}
@@ -93,9 +97,11 @@ public class Rule extends DrawBoard {
 		int value = java.lang.Math.abs(candyBoard[y][x]);
 		int k = 0;
 		int temp = 0;
-		for (int i = 0; i < row; i++) {
+		int m = 0;
+		for (int i = row - 1; i >= 0; i--) {
 			if (value != java.lang.Math.abs(candyBoard[i][x]) && temp >= 3) {
 				k++;
+				m = i + 1;
 				break;
 			}
 			else if (value == java.lang.Math.abs(candyBoard[i][x])) {
@@ -122,13 +128,14 @@ public class Rule extends DrawBoard {
 			}
 		}
 		if (temp >= 3) {
-			System.out.println("FOUND");
-			this.minusCol(y, x, temp);
+	//		System.out.println("FOUND");
+		if (m != 0)	this.minusCol(m, x, temp);
+		else this.minusCol(y, x, temp);
 		}
 	}
 	public void minusCol(int y, int x, int temp) {
 		for (int i = 0; i < temp; i++) {
-			System.out.println("HAD MINUS COL");
+//			System.out.println("HAD MINUS COL");
 			candyBoard[y + i][x] = myMinus(candyBoard[y + i][x]);
 		}
 	}

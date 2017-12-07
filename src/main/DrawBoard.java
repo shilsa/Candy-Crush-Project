@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class DrawBoard extends JPanel{
 	int candySpeed = 10;
-	int candySpeed2 = 10;
+	int candySpeed2 =10;
 	static int i = 0, j = 0, t = 0, m = 0;
 	static final protected int row = 6;
 	static final protected int col = 8;
@@ -27,10 +27,11 @@ public class DrawBoard extends JPanel{
     ImageIcon BG = new ImageIcon("BG1.png");
 	ImageIcon tittle = new ImageIcon("TImg.png");
 	private ImageIcon Candy;
+	private ImageIcon candy;
 	private int X = 60;
 	private int Y = 165;
 	private int MovingY = 815;
-	private static int CandyNumber = 48;
+	private static int CandyNumber = row * col;
 	public static int[][] candyBoard = new int[row][col];
 	int space = 100;
 	int CandyMovingX = X;
@@ -43,9 +44,17 @@ public class DrawBoard extends JPanel{
 	static double B = b;
 	static double MouseX = mouseX;
 	static double MouseY = mouseY;
-
+	static int temp3[][] = new int[row][col];
+	static int time = 0;
 	// create random variable for the string name
 	Random random = new Random();
+	public void setTemp3() {
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				temp3[i][j] = 0;
+			}
+		}
+	}
 	// declare string name
 	List<String> Gemname = new ArrayList<String>();
 	DrawBoard(){
@@ -89,16 +98,24 @@ public class DrawBoard extends JPanel{
 	
 	// input gems name
 	public void Gemsname(){
-		String gem1 = new String("Gblue.png");
-		String gem2 = new String("Gdiamond.png");
-		String gem3 = new String("Ggreen.png");
-		String gem4 = new String("Gred.png");
-		String gem5 = new String("Gyellow.png");
-		Gemname.add(gem1);
-		Gemname.add(gem2);
-		Gemname.add(gem3);
-		Gemname.add(gem4);
-		Gemname.add(gem5);
+		String gem1 = new String("Gblue");
+		String gem2 = new String("Gdiamond");
+		String gem3 = new String("Ggreen");
+		String gem4 = new String("Gred");
+		String gem5 = new String("Gyellow");
+		String png = new String(".png");
+		String br = new String("Brighter");
+		Gemname.add(gem1 + png);
+		Gemname.add(gem2 + png);
+		Gemname.add(gem3 + png);
+		Gemname.add(gem4 + png);
+		Gemname.add(gem5 + png);
+		Gemname.add(gem1+br+png);
+		Gemname.add(gem2+br+png);
+		Gemname.add(gem3+br+png);
+		Gemname.add(gem4+br+png);
+		Gemname.add(gem5+br+png);
+		System.out.println("Hello");
 	}
 	// Assign BlockLocation to an array
 	void BlockLocation(){	
@@ -121,16 +138,11 @@ public class DrawBoard extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g); 
 		Rule rule = new Rule();
-		while (rule.check()) {
-/*			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
+/*		while (rule.check()) {
 			rule.update();
-		};
+		};*/
 //		if(rule.check());
+
 		int CandyX = X;
 		int CandyY = Y;
 		int borderLocationX = 45;
@@ -171,7 +183,7 @@ public class DrawBoard extends JPanel{
 		super.paintComponents(p);
 		int CandyX = X;
 		int CandyY = Y;
-		int CandyYSpeed = 10;
+		int CandyYSpeed = 40;
 		if (i < row){
 		Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[i][j]-1)).toString());
 		Candy.paintIcon(this, p, (CandyMovingX + (j*space)), CandyMovingY);
@@ -186,7 +198,7 @@ public class DrawBoard extends JPanel{
 	//				e.printStackTrace();
 		//		}
 	//		}
-			if(CandyMovingY == (Y + (i*space))){
+			if(CandyMovingY <= (Y + (i*space))){
 				CandyMovingY = MovingY;
 				t++;
 				j++;
@@ -208,13 +220,6 @@ public class DrawBoard extends JPanel{
 			
 	}
 	public void CandyPrinting(Graphics g) {
-		try {
-			Thread.sleep(0);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
 		int CandyX = X;
 		int CandyY = Y;
 		for (int i = 0; i < row; i++) {
@@ -253,62 +258,110 @@ public class DrawBoard extends JPanel{
 
 	
 	public void Animation(Graphics g) {
-	/*	try {
-			Thread.sleep(30);
+		try {
+			Thread.sleep(10);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
+		FallingDown fallingDown = new FallingDown();
+		if (fallingDown.checkCandyStatus() == true) {
+			fallingDown = new FallingDown();
+	//		System.out.println("TIME " + time);
+			time += 1;
+			fallingDown.setCandyStatus();
+		}
+	
+		Rule rule = new Rule();
 		int CandyX = X;
 		int CandyY = Y;
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
-		/*		try {
-					Thread.sleep(10);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}*/
+				System.out.print(candyBoard[i][j] + " ");
 				Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[i][j]-1)).toString());
-				if (mouseClicked < 1) {					
-					Candy.paintIcon(this, g, CandyX, CandyY);
+				if (mouseClicked < 1) {	
+				if (i == mouseY && j == mouseX) {
+					candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[i][j]-1 + 5)).toString());
+					candy.paintIcon(this, g, CandyX, CandyY);
+				}
+					
+				else	Candy.paintIcon(this, g, CandyX, CandyY);
 					CandyX += space;
 					candySpeed = 0;
 					candySpeed2 = 0;
+			if (rule.check())		rule.update();
+					setTemp3();
 				}
 				else {
+					
+					if(rule.check()) ;
+					
 					if (i == mouseY && j == mouseX) CandyX += space ;
 					else if ((i == b)  && (j == a)) CandyX += space;
-					else {
+					else if (fallingDown.candyStatus[i][j] == -1) CandyX += space;
+					else if (fallingDown.candyStatus[i][j] == -2) {
 						Candy.paintIcon(this, g, CandyX, CandyY);
 						CandyX += space;
+					}
+					
+					else if (fallingDown.candyStatus[i][j] > 0) {
+						if (temp3[i][j] < fallingDown.candyStatus[i][j]){
+				/*		if (!fallingDown.checkCandyStatus()) */{
+							Candy.paintIcon(this, g, CandyX, CandyY + temp3[i][j]);
+							CandyX += space;
+							temp3[i][j] += 5;
+			//				System.out.println("TEMP3  " + temp3[i][j] );
+							for (int a = 0; a < row; a++) {
+								for (int b = 0; b < col; b++) {
+									if (fallingDown.check2()) {
+										if (rule.check()) rule.update();
+									}
+									if (temp3[a][b] >= fallingDown.maxCandyStatus()) {
+					//					System.out.println("HAS UPDATED");
+										if (rule.check()) rule.update();
+									}
+										
+								}
+							}
 						}
-					A = a;
-					B = b;
-					MouseX = mouseX;
-					MouseY = mouseY;
-					if (A == mouseX) {
-						if (java.lang.Math.abs(candySpeed) != 100) {
-							Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[mouseY][mouseX] - 1)).toString());
+						}
+					}
+				
+						A = a;
+						B = b;
+						MouseX = mouseX;
+						MouseY = mouseY;	
+						if (A == mouseX) {
+							if (java.lang.Math.abs(candySpeed) != 100) {
+								Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[mouseY][mouseX] - 1)).toString());
+								Candy.paintIcon(this, g,X + (int) A * space,Y + (int) B * space + (int)candySpeed);
+								if (Y + B * space + (int)candySpeed < Y + MouseY * space) candySpeed += 1;
+								else candySpeed -= 1;
+							}
+							else if (java.lang.Math.abs(candySpeed) == 100) {
+								Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[mouseY][mouseX] - 1)).toString());
+//					if (rule.check()) {
+						if (candyBoard[mouseY][mouseX] > 0) {
 							Candy.paintIcon(this, g,X + (int) A * space,Y + (int) B * space + (int)candySpeed);
-							if (Y + B * space + (int)candySpeed < Y + MouseY * space) candySpeed += 1;
-							else candySpeed -= 1;
-						}
-						else if (java.lang.Math.abs(candySpeed) == 100) {
-							Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[mouseY][mouseX] - 1)).toString());
-							Candy.paintIcon(this, g,X + (int) A * space,Y + (int) B * space + (int)candySpeed);
-					//		Thread.sleep(1000);
-						}
-						if (java.lang.Math.abs(candySpeed2) != 100) {
-							Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[(int)B][(int)A] - 1)).toString());
+	//					}
+					}
+				//				rule.update();
+							}
+							if (java.lang.Math.abs(candySpeed2) != 100) {
+								Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[(int)B][(int)A] - 1)).toString());
 							Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2);
 							if (Y + MouseY * space + (int)candySpeed2 < Y + B * space) candySpeed2 += 1;
 							else candySpeed2 -= 1;
 						}
 						else if (java.lang.Math.abs(candySpeed2) == 100) {
 							Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[(int)B][(int)A] - 1)).toString());
-							Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2);
-						//	Thread.sleep(1000);
+					//		if (rule.check()) {
+								if (candyBoard[(int)B][(int)A] > 0) {
+									Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2);
+						//		}
+							}
+							
+					//		rule.update();
 						}
 					}
 					
@@ -321,7 +374,12 @@ public class DrawBoard extends JPanel{
 					}
 					else if (java.lang.Math.abs(candySpeed) == 100) {
 						Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[mouseY][mouseX] - 1)).toString());
-						Candy.paintIcon(this, g,X + (int) A * space + (int)candySpeed,Y + (int) B * space);
+//						if (rule.check()) {
+							if (candyBoard[mouseY][mouseX] > 0) {
+								Candy.paintIcon(this, g,X + (int) A * space + (int)candySpeed,Y + (int) B * space);
+	//						}
+						}
+				
 					//	Thread.sleep(1000);
 					}
 					if (java.lang.Math.abs(candySpeed2) != 100) {
@@ -332,93 +390,27 @@ public class DrawBoard extends JPanel{
 					}
 					else if (java.lang.Math.abs(candySpeed2) == 100) {
 						Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[(int)B][(int)A] - 1)).toString());
-						Candy.paintIcon(this, g,X + (int) MouseX * space +(int)candySpeed2,Y + (int) MouseY * space );
+		//				if (rule.check()) {
+							if (candyBoard[(int)B][(int)A] > 0) {
+								Candy.paintIcon(this, g,X + (int) MouseX * space +(int)candySpeed2,Y + (int) MouseY * space );
+			//				}
+						}
+						
 				//		Thread.sleep(1000);
 					}
 				}
-			
+					
 				}
 		//		fallingDown(g);
 			}
 			CandyX = X;
 			CandyY += space;
+			System.out.println();
 		}
+		
+		System.out.println("TEMP3 " + temp3[i][j]);
 	//	repaint()
 		
 		}
 	
-	static int  temp2[] = new int[col];
-	public void setTemp2() {
-		for (int i = 0; i < col; i++) temp2[i] = 0;
-	}
-	
-	public boolean checkTemp2() {
-		for (int i = 0; i < col; i++) {
-			if (temp2[i] != 0) return false;
-		}
-		return true;
-	}
-	public void fallingDown(Graphics g) {
-		super.paintComponent(g); 
-		Rule rule = new Rule();
-//		while (rule.check()) rule.update();
-//		if(rule.check());
-		int CandyX = X;
-		int CandyY = Y;
-/*		int borderLocationX = 45;
-		int borderLocationY = 150;
-		int ttx = 270;
-		int tty = 20;
-		BG.paintIcon(this, g, 0, 0);
-		tittle.paintIcon(this, g, ttx, tty);
-		//draw GRID
-		for(int counter = 0; counter<row;counter++){
-			for(int i = 0; i < col; i++){
-		g.setColor(Color.WHITE);
-		g.drawRect(borderLocationX, borderLocationY, 100, 100);
-		g.drawRect(borderLocationX+1, borderLocationY+1, 100, 100);
-		borderLocationX = borderLocationX + space;
-		}
-			borderLocationX = 45;
-			borderLocationY = borderLocationY + space;
-		}
-		try {
-			Thread.sleep(30);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	*/	
-		FallingDown fallDown = new FallingDown();
-		fallDown.setCandyStatus();
-	
-		
-		for (int i = 0; i < row; i++) {
-			for (int j = 0; j < col; j++) {
-				if (candyBoard[i][j] < 0) CandyX += space;
-				else {
-					Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[i][j] - 1)).toString());
-					if (fallDown.candyStatus[i][j] == -2) Candy.paintIcon(this, g, CandyX, CandyY);
-					else if (fallDown.candyStatus[i][j] > 0) {
-						if (temp2[j] < fallDown.Temp[j]) {
-							Candy.paintIcon(this, g, CandyX, CandyY + temp);
-							temp2[j]++;	
-							}
-						if (temp2[j] == fallDown.Temp[j]) {
-							temp2[j] = 0;
-						}
-					}
-				}
-			}
-			CandyX = X;
-			CandyY += space;
-		}
-		fallDown.setTemp();
-	//	if (checkTemp2()) {
-			if (rule.check()) rule.update();
-	//	}
-		repaint();
-	}
 }
-
-
