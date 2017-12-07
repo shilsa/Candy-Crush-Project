@@ -15,7 +15,7 @@ import java.applet.*;
 
 public class mainCC extends Applet {
 	
-	public static final int WIDTH = 890, HEIGHT = 820;
+	public static final int WIDTH = 1500, HEIGHT = 1500;
 	mainCC() {
 		JFrame frame = new JFrame("Candy Crush");
 		DrawBoard draw = new DrawBoard();
