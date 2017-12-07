@@ -300,7 +300,7 @@ public class DrawBoard extends JPanel{
 					else if ((i == b)  && (j == a)) CandyX += space;
 					else if (fallingDown.candyStatus[i][j] == -1) CandyX += space;
 					else if (fallingDown.candyStatus[i][j] == -2) {
-						Candy.paintIcon(this, g, CandyX, CandyY);
+		if (CandyY >= Y)				Candy.paintIcon(this, g, CandyX, CandyY);
 						CandyX += space;
 					}
 					
@@ -314,7 +314,7 @@ public class DrawBoard extends JPanel{
 							for (int a = 0; a < row; a++) {
 								for (int b = 0; b < col; b++) {
 									if (fallingDown.check2()) {
-										if (rule.check()) rule.update();
+				//						if (rule.check()) rule.update();
 									}
 									if (temp3[a][b] >= fallingDown.maxCandyStatus()) {
 					//					System.out.println("HAS UPDATED");
