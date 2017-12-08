@@ -33,17 +33,17 @@ public class DrawBoard extends JPanel{
 	private int MovingY = 815;
 	private static int CandyNumber = row * col;
 	public static int[][] candyBoard = new int[row][col];
-	int space = 100;
-	int CandyMovingX = X;
-	int CandyMovingY = MovingY;
-	static int a = 0;
-	static int b = 0;
-	static int value = 0;
-	static int temp = 0;
-	static double A = a;
-	static double B = b;
-	static double MouseX = mouseX;
-	static double MouseY = mouseY;
+	protected int space = 100;
+	private int CandyMovingX = X;
+	private int CandyMovingY = MovingY;
+	private static int a = 0;
+	private static int b = 0;
+	private static int value = 0;
+	protected static int temp = 0;
+	private static double A = a;
+	private static double B = b;
+	private static double MouseX = mouseX;
+	private static double MouseY = mouseY;
 	static int temp3[][] = new int[row][col];
 	static int time = 0;
 	// create random variable for the string name
@@ -273,6 +273,11 @@ public class DrawBoard extends JPanel{
 		
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
+				
+				A = a;
+				B = b;
+				MouseX = mouseX;
+				MouseY = mouseY;
 				System.out.print(candyBoard[i][j] + " ");
 				Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[i][j]-1)).toString());
 				if (mouseClicked < 1) {	
@@ -292,7 +297,12 @@ public class DrawBoard extends JPanel{
 					
 					if(rule.check()) ;
 					
-					if (i == mouseY && j == mouseX) /*CandyX += space */;
+					if (i == mouseY && j == mouseX) {
+						 if (candyBoard[(int)B][(int)A] > 0 && temp3[(int)B][(int)A] < 100 && fallingDown.candyStatus[(int)B][(int)A] > 0) {
+							Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2 - space * (row / 2) + temp3[(int)B][(int)A] );
+								temp3[(int)B][(int)A] += 5;
+							}
+					}
 					else if ((i == b)  && (j == a))/* CandyX += space*/;
 					else if (fallingDown.candyStatus[i][j] == -1)/* CandyX += space*/;
 					else if (fallingDown.candyStatus[i][j] == -2) {
@@ -331,10 +341,7 @@ public class DrawBoard extends JPanel{
 						}
 					}
 				
-						A = a;
-						B = b;
-						MouseX = mouseX;
-						MouseY = mouseY;	
+					
 						if (A == mouseX) {
 							if (java.lang.Math.abs(candySpeed) != 100) {
 								Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[mouseY][mouseX] - 1)).toString());
@@ -364,10 +371,7 @@ public class DrawBoard extends JPanel{
 									Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2 - space * (row / 2));
 						//		}						
 							}
-								else if (candyBoard[(int)B][(int)A] > 0 && temp3[(int)B][(int)A] < 100 && fallingDown.candyStatus[(int)B][(int)A] > 0) {
-								Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2 - space * (row / 2) + temp3[(int)B][(int)A] );
-									temp3[(int)B][(int)A] += -1;
-								}
+		
 							
 					//		rule.update();
 						}
