@@ -331,7 +331,10 @@ public class DrawBoard extends JPanel{
 							}
 						}
 						}
-			//			else if (temp3[i][j] == fallingDown.candyStatus[i][j] ) Candy.paintIcon(this, g, CandyX, CandyY + temp3[i][j]);
+						else if (temp3[i][j] == fallingDown.candyStatus[i][j] ) {
+							if (CandyY + temp3[i][j] >= Y - space / 2)
+							Candy.paintIcon(this, g, CandyX, CandyY + temp3[i][j]);
+						}
 					}
 				
 						A = a;
