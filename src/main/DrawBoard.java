@@ -258,12 +258,6 @@ public class DrawBoard extends JPanel{
 
 	
 	public void Animation(Graphics g) {
-		try {
-			Thread.sleep(0);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		FallingDown fallingDown = new FallingDown();
 		if (fallingDown.checkCandyStatus() == true) {
 			fallingDown = new FallingDown();
@@ -309,9 +303,9 @@ public class DrawBoard extends JPanel{
 					else if (fallingDown.candyStatus[i][j] > 0) {
 						if (temp3[i][j] < fallingDown.candyStatus[i][j]){
 				/*		if (!fallingDown.checkCandyStatus()) */{
-			if (CandyY + temp3[i][j] >= Y - space / 2)	{Candy.paintIcon(this, g, CandyX, CandyY + temp3[i][j]);
+						if (CandyY + temp3[i][j] >= Y - space / 2)	{Candy.paintIcon(this, g, CandyX, CandyY + temp3[i][j]);
 						//	CandyX += space;
-			}
+						}
 							temp3[i][j] += 5;
 			//				System.out.println("TEMP3  " + temp3[i][j] );
 							for (int a = 0; a < row; a++) {
@@ -351,7 +345,7 @@ public class DrawBoard extends JPanel{
 							else if (java.lang.Math.abs(candySpeed) == 100) {
 								Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[mouseY][mouseX] - 1)).toString());
 //					if (rule.check()) {
-						if (candyBoard[mouseY][mouseX] > 0) {
+						if (candyBoard[mouseY][mouseX] > 0 && fallingDown.candyStatus[mouseY][mouseX] == -2) {
 							Candy.paintIcon(this, g,X + (int) A * space,Y + (int) B * space + (int)candySpeed - space * (row / 2));
 	//					}
 					}
@@ -366,10 +360,14 @@ public class DrawBoard extends JPanel{
 						else if (java.lang.Math.abs(candySpeed2) == 100) {
 							Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[(int)B][(int)A] - 1)).toString());
 					//		if (rule.check()) {
-								if (candyBoard[(int)B][(int)A] > 0) {
+								if (candyBoard[(int)B][(int)A] > 0 && fallingDown.candyStatus[(int)B][(int)A] == -2) {
 									Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2 - space * (row / 2));
-						//		}
+						//		}						
 							}
+								else if (candyBoard[(int)B][(int)A] > 0 && temp3[(int)B][(int)A] < 100 && fallingDown.candyStatus[(int)B][(int)A] > 0) {
+								Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2 - space * (row / 2) + temp3[(int)B][(int)A] );
+									temp3[(int)B][(int)A] += -1;
+								}
 							
 					//		rule.update();
 						}
