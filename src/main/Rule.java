@@ -16,26 +16,6 @@ public class Rule extends DrawBoard {
 	Random random = new Random();
 	
 
-	
-/*	public int[][] candyBoard =  new int[row][col];
-	public Rule() {
-
-	}
-	
-	public void setRule()
-	{
-		for (int i = 0; i < row; i++) {
-			for (int j = 0; j < col; j++) {				
-				candyBoard[i][j] = random.nextInt(5) + 0;
-				while ((candyBoard[i][j] == candyBoard[i][j - 1] && candyBoard[i][j] == candyBoard[i][j - 2]) ||
-						(candyBoard[i][j] == candyBoard[i - 1][j] && candyBoard[i][j] == candyBoard[i - 2][j])) {
-					candyBoard[i][j] = random.nextInt(5) + 0;
-				}
-			}
-		}
-	}
-	
-	*/
 	public void checkRow(int y, int x) {
 		int value = java.lang.Math.abs(candyBoard[y][x]);
 		int k = 0;
