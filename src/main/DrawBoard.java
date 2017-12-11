@@ -191,13 +191,13 @@ public class DrawBoard extends JPanel{
 		}
 		if(t < CandyNumber){
 		//	if(CandyMovingY != Y){
-	//			try {
+//			try {
 //					Thread.sleep(1);
 //					repaint();
-	//			} catch (InterruptedException e) {
-	//				e.printStackTrace();
-		//		}
-	//		}
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//		}
+//		}
 			if(CandyMovingY <= (Y + (i*space))){
 				CandyMovingY = MovingY;
 				t++;
