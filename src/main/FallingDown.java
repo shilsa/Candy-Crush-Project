@@ -35,17 +35,6 @@ public class FallingDown extends DrawBoard {
 		}
 	}
 	public void setCandyStatus() {
-/*		for (int i = row - 1; i >= 0; i--) {
-			for (int j = 0; j < col; j++) {
-				if (candyStatus[i][j] == -1) {
-					for (int k = i; k >= 0; k--) {
-						if (candyStatus[k][j] == -1);
-						else if (candyBoard[k][j] < 0);
-						else candyStatus[k][j] = space * Temp[j];
-					}
-				}
-			}
-		}*/
 	}
 	public int maxCandyStatus() {
 		int temp = -2;
