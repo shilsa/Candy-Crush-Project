@@ -12,6 +12,7 @@ public class Rule extends DrawBoard {
 	static int b = 0;
 	static int value = 0;
 	static int temp = 0;
+	static int score = 0;
 	
 	Random random = new Random();
 	
@@ -150,9 +151,16 @@ public class Rule extends DrawBoard {
 			}
 		}
 		
-			
+		for (int i = row / 2; i < row; i++)
+		{
+			for (int j = 0; j < col; j++)
+			{	
+				if (candyBoard[i][j] < 0)
+					score++;
+			}
+		}
 		
-		for (int i = 0; i < row; i++)
+		for (int i = row / 2; i < row; i++)
 		{
 			for (int j = 0; j < col; j++)
 			{	
