@@ -6,17 +6,20 @@ public class FallingDown extends DrawBoard {
 	public FallingDown() {
 		this.setTemp();
 		this.setUpCandyStatus();
-		for (int i = row - 1; i >- 0; i--) {
-			for (int j = 0; j < col; j++) {
+		for (int j = col - 1; j >= 0; j--) {
+			int temp = 0;
+			for (int i = row - 1; i >= 0; i--) {
 				if (candyBoard[i][j] < 0) {
+					temp++;
 					candyStatus[i][j] = -1;
-					int temp = 0;
-					for (int k = i; k >= 0; k--) {
-						if (candyBoard[k][j] < 0) temp++;
-						if (Temp[i] < temp) Temp[i] = temp;
-					}
 				}
+				else if (candyBoard[i][j] > 0 && temp == 0);
+				else if (candyBoard[i][j] > 0 && temp > 0) {
+					candyStatus[i][j] = temp * space;
+				}
+
 			}
+			
 		}
 		
 		
@@ -32,18 +35,41 @@ public class FallingDown extends DrawBoard {
 		}
 	}
 	public void setCandyStatus() {
-		for (int i = row - 1; i >= 0; i++) {
+/*		for (int i = row - 1; i >= 0; i--) {
 			for (int j = 0; j < col; j++) {
-				if (candyStatus[i][j] == -1);
-				else if (candyBoard[i][j] < 0) {
-					candyStatus[i][j] = -1;
-					for (int k = i; k >= 0; i--) {
+				if (candyStatus[i][j] == -1) {
+					for (int k = i; k >= 0; k--) {
 						if (candyStatus[k][j] == -1);
 						else if (candyBoard[k][j] < 0);
 						else candyStatus[k][j] = space * Temp[j];
 					}
 				}
 			}
+		}*/
+	}
+	public int maxCandyStatus() {
+		int temp = -2;
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				if (temp < candyStatus[i][j]) temp = candyStatus[i][j];
+			}
 		}
+		return temp;
+	}
+	public boolean checkCandyStatus() {
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				if (temp3[i][j] < maxCandyStatus()) return false;
+			}
+		}
+		return true;
+	}
+	public boolean check2() {
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				if (candyStatus[i][j] > 0) return false;
+			}
+		}
+		return true;
 	}
 }
