@@ -16,7 +16,7 @@ import java.applet.*;
 public class mainCC extends Applet {
 	
 	public static final int WIDTH = 890, HEIGHT = 820;
-	mainCC() {
+	public mainCC() {
 		JFrame frame = new JFrame("Candy Crush");
 		DrawBoard draw = new DrawBoard();
 		draw.BlockLocation();
@@ -36,7 +36,7 @@ public class mainCC extends Applet {
 		
 	}
 	public static void main(String[] args) {
-		mainCC frame = new mainCC();
+		new mainCC();
 	}
 
 }

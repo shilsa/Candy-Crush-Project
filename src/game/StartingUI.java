@@ -7,6 +7,8 @@ package game;
 
 import java.util.List;
 
+import main.mainCC;
+
 
 /**
  *
@@ -81,6 +83,7 @@ public class StartingUI extends javax.swing.JFrame {
     private void newgameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newgameActionPerformed
         // TODO add your handling code here:
         new NewGame().setVisible(true);
+        
     }//GEN-LAST:event_newgameActionPerformed
 
     private void leaderboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaderboardActionPerformed
@@ -128,6 +131,8 @@ public class StartingUI extends javax.swing.JFrame {
         });
         
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exit;

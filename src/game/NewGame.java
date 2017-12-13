@@ -7,6 +7,8 @@ package game;
 
 import java.util.List;
 
+import main.mainCC;
+
 /**
  *
  * @author HP
@@ -82,11 +84,14 @@ public class NewGame extends javax.swing.JFrame {
         objPlayer.setName(name.getText());
         Data.getInstance().addPlayer(objPlayer);
         Leaderboard.addtoLeaderboard();
+    //    this.setVisible(false);
+      
     }//GEN-LAST:event_createplayerActionPerformed
 
     private void MainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MainMenuActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
+        mainCC frame = new mainCC();
     }//GEN-LAST:event_MainMenuActionPerformed
 
     /**
