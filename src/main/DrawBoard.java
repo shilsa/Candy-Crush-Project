@@ -18,9 +18,10 @@ import java.util.Random;
 public class DrawBoard extends JPanel{
 	int candySpeed = 10;
 	int candySpeed2 =10;
-	static int i = 0, j = 0, t = 0, m = 0;
+
 	static final protected int row = 12;
 	static final protected int col = 8;
+	static int i = row / 2, j = 0, t = 0, m = 0;
 	static protected int  mouseClicked = -1;
 	static protected int mouseX = 0;
 	static protected int mouseY = 0;
@@ -77,9 +78,17 @@ public class DrawBoard extends JPanel{
 					System.out.println("AHIHI " +  value);
 				}
 				else if (mouseClicked == 1) {
-					System.out.println("AHIHI " + candyBoard[mouseY][mouseX]);
-					candyBoard[b][a] =  getCandyBoard(mouseY, mouseX);
-					candyBoard[mouseY][mouseX] = value;
+					Rule rule = new Rule();
+					if (swapCondition() == false);
+					else {
+						candyBoard[b][a] =  getCandyBoard(mouseY, mouseX);
+						candyBoard[mouseY][mouseX] = value;
+						if (rule.check() == false) {
+							candyBoard[mouseY][mouseX] = candyBoard[b][a];
+							candyBoard[b][a] = value;
+						}
+					}
+					
 				}
 		    }
 		});
@@ -185,7 +194,7 @@ public class DrawBoard extends JPanel{
 					e.printStackTrace();
 				}
 			}
-			if(CandyMovingY <= (Y + (i*space))){
+			if(CandyMovingY <= (Y + ((i - row / 2)*space))){
 				CandyMovingY = MovingY;
 				t++;
 				j++;
@@ -213,7 +222,7 @@ public class DrawBoard extends JPanel{
 			}
 			System.out.println();
 		}
-		for(int k = 0; k <= i; k++ ){
+		for(int k = row / 2; k <= i; k++ ){
 			for(int l = 0; l < col; l++){
 		//		Candy = new ImageIcon(Gemname.get(candyBoard[k][l]-1).toString());
 				Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[k][l]-1)).toString());
@@ -279,14 +288,14 @@ public class DrawBoard extends JPanel{
 					
 					if(rule.check()) ;
 					
-					if (i == mouseY && j == mouseX) {
-						 if (candyBoard[(int)B][(int)A] > 0 && temp3[(int)B][(int)A] < 100 && fallingDown.candyStatus[(int)B][(int)A] > 0) {
+					if (i == mouseY && j == mouseX && swapCondition() == true) {
+						 if (candyBoard[(int)B][(int)A] > 0 && temp3[(int)B][(int)A] <= fallingDown.candyStatus[(int)B][(int)A] && fallingDown.candyStatus[(int)B][(int)A] > 0) {
 							Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2 - space * (row / 2) + temp3[(int)B][(int)A] );
 								temp3[(int)B][(int)A] += 5;
 							}
 					}
-					else if ((i == b)  && (j == a))/* CandyX += space*/;
-					else if (fallingDown.candyStatus[i][j] == -1)/* CandyX += space*/;
+					else if ((i == b)  && (j == a) && swapCondition() == true);
+					else if (fallingDown.candyStatus[i][j] == -1);
 					else if (fallingDown.candyStatus[i][j] == -2) {
 					if (CandyY >= Y)	Candy.paintIcon(this, g, CandyX, CandyY);
 					//	CandyX += space;
@@ -302,7 +311,7 @@ public class DrawBoard extends JPanel{
 								for (int b = 0; b < col; b++) {
 									if (fallingDown.check2()) {
 									}
-									if (temp3[a][b] >= fallingDown.maxCandyStatus()) {
+									if (temp3[a][b] == fallingDown.maxCandyStatus()) {
 										if (rule.check()) {
 											rule.update();
 											setTemp3();
@@ -319,7 +328,9 @@ public class DrawBoard extends JPanel{
 						}
 					}
 				
-					
+					// Swap animation
+					if (swapCondition() == false);
+					else if (swapCondition() == true){
 						if (A == mouseX) {
 							if (java.lang.Math.abs(candySpeed) != 100) {
 								Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[mouseY][mouseX] - 1)).toString());
@@ -374,6 +385,9 @@ public class DrawBoard extends JPanel{
 						}
 						
 					}
+						
+					}
+						
 				}
 					
 				}
@@ -387,5 +401,12 @@ public class DrawBoard extends JPanel{
 		System.out.println("TEMP3 " + temp3[i][j]);
 		
 		}
+	
+	public boolean swapCondition() {
+		Rule rule = new Rule();
+		if (java.lang.Math.abs(b - mouseY) > 1 || java.lang.Math.abs(a - mouseX) > 1) return false;
+		else if (java.lang.Math.abs(b - mouseY) == 1 && java.lang.Math.abs(a - mouseX) == 1) return false;
+		return true;
+	}
 	
 }
