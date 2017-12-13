@@ -293,12 +293,17 @@ public class DrawBoard extends JPanel{
 					if(rule.check()) ;
 					
 					if (i == mouseY && j == mouseX && swapCondition() == true) {
-						 if (/*candyBoard[(int)B][(int)A] > 0 && */temp3[i][j] <= fallingDown.candyStatus[i][j]  && fallingDown.candyStatus[i][j] > 0) {
-							Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2 - space * (row / 2) + temp3[i][j] + space * 2);
+						 if (candyBoard[(int)B][(int)A] > 0 && temp3[i][j] <= fallingDown.candyStatus[(int)B][(int)A]  && fallingDown.candyStatus[(int)B][(int)A] > 0) {
+							Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2 - space * (row / 2) + temp3[(int)B][(int)A] + space * 2);
 								temp3[(int)B][(int)A] += 5;
 							}
 					}
-					else if ((i == b)  && (j == a) && swapCondition() == true);
+					else if ((i == b)  && (j == a) && swapCondition() == true) {
+						 if (candyBoard[(int)B][(int)A] > 0 && temp3[i][j] <= fallingDown.candyStatus[(int)B][(int)A]  && fallingDown.candyStatus[(int)B][(int)A] > 0) {
+							Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2 - space * (row / 2) + temp3[(int)B][(int)A] + space * 2);
+								temp3[(int)B][(int)A] += 5;
+							}
+					}
 					else if (fallingDown.candyStatus[i][j] == -1);
 					else if (fallingDown.candyStatus[i][j] == -2) {
 					if (CandyY >= Y)	Candy.paintIcon(this, g, CandyX, CandyY);
