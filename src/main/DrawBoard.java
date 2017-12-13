@@ -47,6 +47,7 @@ public class DrawBoard extends JPanel{
 	private static double MouseY = mouseY;
 	static int temp3[][] = new int[row][col];
 	static int time = 0;
+	
 	// create random variable for the string name
 	Random random = new Random();
 	public void setTemp3() {
@@ -186,6 +187,7 @@ public class DrawBoard extends JPanel{
 		CandyMovingY = CandyMovingY - CandyYSpeed;
 		}
 		if(t < CandyNumber){
+<<<<<<< HEAD
 			if(CandyMovingY != Y){
 				try {
 					Thread.sleep(1);
@@ -195,6 +197,9 @@ public class DrawBoard extends JPanel{
 				}
 			}
 			if(CandyMovingY <= (Y + ((i - row / 2)*space))){
+=======
+			if(CandyMovingY <= (Y + (i*space))){
+>>>>>>> 46f719c1165557372acb3c15dd694b06621ceb8f
 				CandyMovingY = MovingY;
 				t++;
 				j++;
