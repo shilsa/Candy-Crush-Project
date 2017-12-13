@@ -33,9 +33,9 @@ public class mainCC extends Applet {
 		FallingDown fallingDown = new FallingDown();
 		fallingDown.setCandyStatus();
 		draw.setTemp3();
-	//}
+	}
 	//public static void main(String[] args) {
-	//	new mainCC();
+		//new mainCC();
 	//}
 
 }
