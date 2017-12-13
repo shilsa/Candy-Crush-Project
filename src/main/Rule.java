@@ -79,7 +79,7 @@ public class Rule extends DrawBoard {
 		int k = 0;
 		int temp = 0;
 		int m = 0;
-		for (int i = row - 1; i >= 0; i--) {
+		for (int i = row - 1; i >= row / 2; i--) {
 			if (value != java.lang.Math.abs(candyBoard[i][x]) && temp >= 3) {
 				k++;
 				m = i + 1;

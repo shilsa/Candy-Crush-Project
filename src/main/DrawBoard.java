@@ -47,7 +47,7 @@ public class DrawBoard extends JPanel{
 	private static double MouseY = mouseY;
 	static int temp3[][] = new int[row][col];
 	static int time = 0;
-	public static int timePlay = 50;
+	public static int timePlay = 10000;
 	
 	// create random variable for the string name
 	Random random = new Random();
@@ -172,7 +172,7 @@ public class DrawBoard extends JPanel{
 			CandyPrinting(g);
 			System.out.println("I = " + i + " J = " + j );
 		}
-		timePlay--;
+	//	if (timePlay > 0) timePlay--;
 		repaint();
 	}
 
@@ -293,8 +293,8 @@ public class DrawBoard extends JPanel{
 					if(rule.check()) ;
 					
 					if (i == mouseY && j == mouseX && swapCondition() == true) {
-						 if (candyBoard[(int)B][(int)A] > 0 && temp3[(int)B][(int)A] <= fallingDown.candyStatus[(int)B][(int)A] && fallingDown.candyStatus[(int)B][(int)A] > 0) {
-							Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2 - space * (row / 2) + temp3[(int)B][(int)A] );
+						 if (/*candyBoard[(int)B][(int)A] > 0 && */temp3[i][j] <= fallingDown.candyStatus[i][j]  && fallingDown.candyStatus[i][j] > 0) {
+							Candy.paintIcon(this, g,X + (int) MouseX * space,Y + (int) MouseY * space + (int)candySpeed2 - space * (row / 2) + temp3[i][j] + space * 2);
 								temp3[(int)B][(int)A] += 5;
 							}
 					}
