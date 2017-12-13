@@ -83,15 +83,15 @@ public class NewGame extends javax.swing.JFrame {
         Player objPlayer = new Player();
         objPlayer.setName(name.getText());
         Data.getInstance().addPlayer(objPlayer);
-        Leaderboard.addtoLeaderboard();
-    //    this.setVisible(false);
+        mainCC frame = new mainCC();        
+        this.setVisible(false);
       
     }//GEN-LAST:event_createplayerActionPerformed
 
     private void MainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MainMenuActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        mainCC frame = new mainCC();
+
     }//GEN-LAST:event_MainMenuActionPerformed
 
     /**
@@ -124,7 +124,10 @@ public class NewGame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewGame().setVisible(true);
+              NewGame newg =  new NewGame();
+              newg.setSize(820, 890);
+              newg.setVisible(true);
+              newg.setLocationRelativeTo(null);
             }
         });
     }

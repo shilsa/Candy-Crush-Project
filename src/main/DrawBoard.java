@@ -18,7 +18,7 @@ import java.util.Random;
 public class DrawBoard extends JPanel{
 	int candySpeed = 10;
 	int candySpeed2 =10;
-
+	
 	static final protected int row = 12;
 	static final protected int col = 8;
 	static int i = row / 2, j = 0, t = 0, m = 0;
@@ -47,6 +47,7 @@ public class DrawBoard extends JPanel{
 	private static double MouseY = mouseY;
 	static int temp3[][] = new int[row][col];
 	static int time = 0;
+	public static int timePlay = 50;
 	
 	// create random variable for the string name
 	Random random = new Random();
@@ -103,7 +104,7 @@ public class DrawBoard extends JPanel{
 	}
 	
 	// input gems name
-	public void Gemsname(){
+	private void Gemsname(){
 		String gem1 = new String("Gblue");
 		String gem2 = new String("Gdiamond");
 		String gem3 = new String("Ggreen");
@@ -124,7 +125,7 @@ public class DrawBoard extends JPanel{
 		System.out.println("Hello");
 	}
 	// Assign BlockLocation to an array
-	void BlockLocation(){	
+	public void BlockLocation(){	
 		for(int i = 0; i < row; i++){
 			for(int j = 0; j < col; j++){
 				int rand = random.nextInt(5) + 1;
@@ -171,12 +172,13 @@ public class DrawBoard extends JPanel{
 			CandyPrinting(g);
 			System.out.println("I = " + i + " J = " + j );
 		}
+		timePlay--;
 		repaint();
 	}
 
 	
 
-	void CandyMoving(Graphics p){
+	private void CandyMoving(Graphics p){
 		super.paintComponents(p);
 		int CandyX = X;
 		int CandyY = Y;
@@ -215,7 +217,7 @@ public class DrawBoard extends JPanel{
 		}
 			
 	}
-	public void CandyPrinting(Graphics g) {
+	private void CandyPrinting(Graphics g) {
 		int CandyX = X;
 		int CandyY = Y;
 		for (int i = row / 2; i < row; i++) {
@@ -252,7 +254,7 @@ public class DrawBoard extends JPanel{
 	
 
 	
-	public void Animation(Graphics g) {
+	private void Animation(Graphics g) {
 		FallingDown fallingDown = new FallingDown();
 		if (fallingDown.checkCandyStatus() == true) {
 			fallingDown = new FallingDown();
@@ -404,10 +406,11 @@ public class DrawBoard extends JPanel{
 		
 		}
 	
-	public boolean swapCondition() {
+	private boolean swapCondition() {
 		Rule rule = new Rule();
 		if (java.lang.Math.abs(b - mouseY) > 1 || java.lang.Math.abs(a - mouseX) > 1) return false;
 		else if (java.lang.Math.abs(b - mouseY) == 1 && java.lang.Math.abs(a - mouseX) == 1) return false;
+		else if (timePlay <= 0) return false;
 		return true;
 	}
 	

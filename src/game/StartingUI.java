@@ -126,7 +126,10 @@ public class StartingUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StartingUI().setVisible(true);
+                StartingUI star = new StartingUI();
+                star.setSize(820, 890);
+                star.setVisible(true);
+                star.setLocationRelativeTo(null);
             }
         });
         

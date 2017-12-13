@@ -12,12 +12,12 @@ public class Rule extends DrawBoard {
 	static int b = 0;
 	static int value = 0;
 	static int temp = 0;
-	static int score = 0;
+	static public int score = 0;
 	
 	Random random = new Random();
 	
 
-	public void checkRow(int y, int x) {
+	private void checkRow(int y, int x) {
 		int value = java.lang.Math.abs(candyBoard[y][x]);
 		int k = 0;
 		int temp = 0;
@@ -58,14 +58,14 @@ public class Rule extends DrawBoard {
 		}
 	}
 	
-	public void minusRow(int y, int x, int temp) {
+	private void minusRow(int y, int x, int temp) {
 		for (int i = 0; i < temp; i++) {
 	//		System.out.println("HAS MINUS ROW");
 			candyBoard[y][i + x] = myMinus(candyBoard[y][i + x]);
 		}
 	}
 	
-	public int myMinus(int x) {
+	private int myMinus(int x) {
 		if (x > 0) {
 			return -x;
 		}
@@ -74,7 +74,7 @@ public class Rule extends DrawBoard {
 		}
 	}
 	
-	public void checkCol(int y, int x) {
+	private void checkCol(int y, int x) {
 		int value = java.lang.Math.abs(candyBoard[y][x]);
 		int k = 0;
 		int temp = 0;
@@ -114,7 +114,7 @@ public class Rule extends DrawBoard {
 		else this.minusCol(y, x, temp);
 		}
 	}
-	public void minusCol(int y, int x, int temp) {
+	private void minusCol(int y, int x, int temp) {
 		for (int i = 0; i < temp; i++) {
 //			System.out.println("HAD MINUS COL");
 			candyBoard[y + i][x] = myMinus(candyBoard[y + i][x]);
@@ -133,7 +133,7 @@ public class Rule extends DrawBoard {
 		}
 	}
 	
-	public void updateCandyBoard(int i, int j) {
+	private void updateCandyBoard(int i, int j) {
 		while (i > 0) {
 			
 			candyBoard[i][j] = candyBoard[i - 1][j];

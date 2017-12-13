@@ -17,7 +17,7 @@ public class Data {
         return data;
     }
 
-    public List<Player> Player_list = new ArrayList<>();
+    public static List<Player> Player_list = new ArrayList();
 
     public List<Player> getPlayer_list(){
         return Player_list;
