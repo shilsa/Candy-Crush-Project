@@ -16,6 +16,7 @@ import java.applet.*;
 public class mainCC extends Applet {
 	
 	public static final int WIDTH = 890, HEIGHT = 820;
+                
 	public mainCC() {
 		JFrame frame = new JFrame("Candy Crush");
 		DrawBoard draw = new DrawBoard();
@@ -33,9 +34,11 @@ public class mainCC extends Applet {
 		FallingDown fallingDown = new FallingDown();
 		fallingDown.setCandyStatus();
 		draw.setTemp3();
+                
 	}
-	public static void main(String[] args) {
-		new mainCC();
-	}
+
+//	public static void main(String[] args) {
+//		new mainCC();
+//	}
 
 }

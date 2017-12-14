@@ -1,5 +1,6 @@
 package main;
 
+import game.Result;
 import javax.swing.ImageIcon;
 import java.awt.*;
 import java.awt.event.*;
@@ -47,7 +48,7 @@ public class DrawBoard extends JPanel{
 	private static double MouseY = mouseY;
 	static int temp3[][] = new int[row][col];
 	static int time = 0;
-	public static int timePlay = 10000;
+	public static int timePlay = 1000;
 	
 	// create random variable for the string name
 	Random random = new Random();
@@ -139,6 +140,9 @@ public class DrawBoard extends JPanel{
 	
 	
 	protected void paintComponent(Graphics g) {
+                if(timePlay == 0){
+                   endgame();
+                }
 		super.paintComponent(g); 
 		Rule rule = new Rule();
 		System.out.println(candySpeed2);
@@ -180,7 +184,7 @@ public class DrawBoard extends JPanel{
 			CandyPrinting(g);
 	//		System.out.println("I = " + i + " J = " + j );
 		}
-	//	if (timePlay > 0) timePlay--;
+		if (timePlay > -4) timePlay--;
 		repaint();
 	}
 
@@ -605,4 +609,12 @@ public class DrawBoard extends JPanel{
 			CandyY += space;
 		}
 	}
+        private void endgame(){
+            Result result = new Result();
+            result.setSize(400,350);
+            result.setVisible(true);
+            result.setLocationRelativeTo(null);
+            Rule r = new Rule();
+            result.score.setText(Integer.toString(r.getScore()));
+        }
 }
