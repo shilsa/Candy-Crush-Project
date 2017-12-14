@@ -21,7 +21,7 @@ public class mainCC extends Applet {
 		DrawBoard draw = new DrawBoard();
 		draw.BlockLocation();
 	//	draw.setTemp2();
-//		draw.paintComponent();
+	//	draw.paintComponent(g);
 		frame.setVisible(true);
 		frame.setSize(WIDTH,HEIGHT);
 		frame.setLocationRelativeTo(null);
