@@ -5,7 +5,12 @@
  */
 package game;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import javax.print.DocFlavor;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -85,6 +90,7 @@ public class Leaderboard extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        Collections.sort(Data.getInstance().getPlayer_list());
         addtoLeaderboard();
     }//GEN-LAST:event_formWindowOpened
 
@@ -95,53 +101,18 @@ public class Leaderboard extends javax.swing.JFrame {
 
     
     public static void addtoLeaderboard(){
-        List<Player> listofplayers = Data.getInstance().getPlayer_list();
+        //List<Player> listofplayers = Data.getInstance().getPlayer_list();
         String[] title = new String[]{"Rank","Name","Score"};
         DefaultTableModel model = new DefaultTableModel(title,0);
         Object[] row;
-        for(Player objPlayer: listofplayers){
+        for(Player objPlayer: Data.getInstance().getPlayer_list()){
             row = new Object[3];
-          
+            row[0] = Data.getInstance().getPlayer_list().indexOf(objPlayer) + 1;
             row[1] = objPlayer.getName();
             row[2] = objPlayer.getScore();
             model.addRow(row);
         }
         table.setModel(model);
-    }
-    /**
-     * @param args the command line arguments
-     */
-    
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Leaderboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Leaderboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Leaderboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Leaderboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Leaderboard().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

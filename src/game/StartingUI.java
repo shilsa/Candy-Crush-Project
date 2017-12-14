@@ -48,7 +48,7 @@ public class StartingUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(newgame);
-        newgame.setBounds(230, 180, 110, 23);
+        newgame.setBounds(220, 180, 120, 23);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/game/TImg.png"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -62,7 +62,7 @@ public class StartingUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(leaderboard);
-        leaderboard.setBounds(250, 240, 100, 23);
+        leaderboard.setBounds(220, 220, 120, 23);
 
         exit.setText("Exit");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +71,7 @@ public class StartingUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(exit);
-        exit.setBounds(260, 290, 73, 23);
+        exit.setBounds(240, 260, 73, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/game/BG1.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -82,13 +82,19 @@ public class StartingUI extends javax.swing.JFrame {
 
     private void newgameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newgameActionPerformed
         // TODO add your handling code here:
-        new NewGame().setVisible(true);
-        
+        Result result = new Result();
+        result.setSize(400,350);
+        result.setVisible(true);
+        result.setLocationRelativeTo(null);
+        new mainCC();
     }//GEN-LAST:event_newgameActionPerformed
 
     private void leaderboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaderboardActionPerformed
         // TODO add your handling code here:
-        new Leaderboard().setVisible(true);
+        Leaderboard lead = new Leaderboard();
+        lead.setSize(412,270);
+        lead.setVisible(true);
+        lead.setLocationRelativeTo(null);
     }//GEN-LAST:event_leaderboardActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
@@ -126,10 +132,10 @@ public class StartingUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                StartingUI star = new StartingUI();
-                star.setSize(820, 890);
-                star.setVisible(true);
-                star.setLocationRelativeTo(null);
+                StartingUI start = new StartingUI();
+                start.setSize(600,400);
+                start.setVisible(true);
+                start.setLocationRelativeTo(null);
             }
         });
         
