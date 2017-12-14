@@ -61,7 +61,7 @@ public class DrawBoard extends JPanel{
 	}
 	// declare string name
 	List<String> Gemname = new ArrayList<String>();
-	DrawBoard(){
+	public DrawBoard(){
 		addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
