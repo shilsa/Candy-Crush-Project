@@ -113,6 +113,6 @@ public class Result extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private static javax.swing.JTextField name;
-    private static javax.swing.JTextField score;
+    public static javax.swing.JTextField score;
     // End of variables declaration//GEN-END:variables
 }

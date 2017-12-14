@@ -12,11 +12,13 @@ public class Rule extends DrawBoard {
 	static int b = 0;
 	static int value = 0;
 	static int temp = 0;
-	static public int score = 0;
+	static private int score = 0;
 	
 	Random random = new Random();
 	
-
+        public int getScore(){
+            return score;
+        }
 	private void checkRow(int y, int x) {
 		int value = java.lang.Math.abs(candyBoard[y][x]);
 		int k = 0;
