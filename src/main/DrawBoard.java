@@ -48,6 +48,7 @@ public class DrawBoard extends JPanel{
 	static int temp3[][] = new int[row][col];
 	static int time = 0;
 	public static int timePlay = 10000;
+	Font font = new Font("Ariel",25,8);
 	
 	// create random variable for the string name
 	Random random = new Random();
@@ -164,7 +165,7 @@ public class DrawBoard extends JPanel{
 			borderLocationX = 45;
 			borderLocationY = borderLocationY + space;
 		}
-	
+		
 		// draw the Candy
 		if (i == row - 1 && j == col - 1) Animation(g);
 		else {
@@ -173,6 +174,7 @@ public class DrawBoard extends JPanel{
 			System.out.println("I = " + i + " J = " + j );
 		}
 	//	if (timePlay > 0) timePlay--;
+		
 		repaint();
 	}
 
