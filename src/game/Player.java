@@ -1,7 +1,9 @@
 
 package game;
 
-public class Player {
+import javax.security.auth.AuthPermission;
+
+public class Player implements Comparable<Player>{
     private String Name;
     private int Score;
 
@@ -31,5 +33,9 @@ public class Player {
         this.Score = Score;
     }
     
-    
+    public int compareTo(Player comparePlayer){
+       int compareScore = ((Player) comparePlayer).getScore();
+       return compareScore - this.getScore();
+       
+    }
 }
