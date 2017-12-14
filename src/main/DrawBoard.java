@@ -174,6 +174,7 @@ public class DrawBoard extends JPanel{
 			if (java.lang.Math.abs(candySpeed2) == space) fallDown(g);
 			swapAnimation(g);
 		}
+		Animation(g);
 		}
 		else {
 			CandyMoving(g);
