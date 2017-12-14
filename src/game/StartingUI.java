@@ -82,10 +82,10 @@ public class StartingUI extends javax.swing.JFrame {
 
     private void newgameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newgameActionPerformed
         // TODO add your handling code here:
-        //Result result = new Result();
-        //result.setSize(400,350);
-       // result.setVisible(true);
-        //result.setLocationRelativeTo(null);
+        Result result = new Result();
+        result.setSize(400,350);
+        result.setVisible(true);
+        result.setLocationRelativeTo(null);
         new mainCC();
     }//GEN-LAST:event_newgameActionPerformed
 

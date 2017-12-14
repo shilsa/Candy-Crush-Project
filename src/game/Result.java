@@ -91,12 +91,12 @@ public class Result extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        List<Player> listofplayers = Data.getInstance().getPlayer_list();
+        //List<Player> listofplayers = Data.getInstance().getPlayer_list();
         Player objPlayer = new Player();
         objPlayer.setName(name.getText());
+        int i = 0;
         objPlayer.setScore(Integer.parseInt(score.getText()));
         Data.getInstance().addPlayer(objPlayer);
-        
         this.setVisible(false);
         
     }//GEN-LAST:event_jButton1ActionPerformed

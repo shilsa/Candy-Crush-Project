@@ -3,7 +3,6 @@ package game;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Data {
@@ -17,9 +16,9 @@ public class Data {
         return data;
     }
 
-    public static List<Player> Player_list = new ArrayList();
+    public static ArrayList<Player> Player_list = new ArrayList();
 
-    public List<Player> getPlayer_list(){
+    public ArrayList<Player> getPlayer_list(){
         return Player_list;
     }
     

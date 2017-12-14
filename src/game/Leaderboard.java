@@ -5,7 +5,12 @@
  */
 package game;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import javax.print.DocFlavor;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -85,6 +90,7 @@ public class Leaderboard extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        Collections.sort(Data.getInstance().getPlayer_list());
         addtoLeaderboard();
     }//GEN-LAST:event_formWindowOpened
 
@@ -95,13 +101,13 @@ public class Leaderboard extends javax.swing.JFrame {
 
     
     public static void addtoLeaderboard(){
-        List<Player> listofplayers = Data.getInstance().getPlayer_list();
+        //List<Player> listofplayers = Data.getInstance().getPlayer_list();
         String[] title = new String[]{"Rank","Name","Score"};
         DefaultTableModel model = new DefaultTableModel(title,0);
         Object[] row;
-        for(Player objPlayer: listofplayers){
+        for(Player objPlayer: Data.getInstance().getPlayer_list()){
             row = new Object[3];
-          
+            row[0] = Data.getInstance().getPlayer_list().indexOf(objPlayer) + 1;
             row[1] = objPlayer.getName();
             row[2] = objPlayer.getScore();
             model.addRow(row);
