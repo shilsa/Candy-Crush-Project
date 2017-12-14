@@ -616,5 +616,7 @@ public class DrawBoard extends JPanel{
             result.setLocationRelativeTo(null);
             Rule r = new Rule();
             result.score.setText(Integer.toString(r.getScore()));
+            mainCC m = new mainCC();
+            m.frame.dispose();
         }
 }

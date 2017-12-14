@@ -83,8 +83,9 @@ public class StartingUI extends javax.swing.JFrame {
 
     private void newgameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newgameActionPerformed
         // TODO add your handling code here:
-        
+        //mainCC newmain = new mainCC();
         new mainCC();
+        
     }//GEN-LAST:event_newgameActionPerformed
 
     private void leaderboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaderboardActionPerformed
@@ -97,7 +98,9 @@ public class StartingUI extends javax.swing.JFrame {
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        writetofile w = new writetofile();
+        w.writetofile();
+        System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
 
     /**

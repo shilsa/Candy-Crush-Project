@@ -13,12 +13,11 @@ import java.awt.event.*;
 import java.applet.*;
 
 
-public class mainCC extends Applet {
-	
+public class mainCC extends Applet {   
 	public static final int WIDTH = 890, HEIGHT = 820;
-                
+        public static JFrame frame = new JFrame("Candy Crush");
 	public mainCC() {
-		JFrame frame = new JFrame("Candy Crush");
+		
 		DrawBoard draw = new DrawBoard();
 		draw.BlockLocation();
 	//	draw.setTemp2();
@@ -27,7 +26,7 @@ public class mainCC extends Applet {
 		frame.setSize(WIDTH,HEIGHT);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(draw);
 		Rule rule = new Rule();
 		while(rule.check()) rule.update();
@@ -37,8 +36,8 @@ public class mainCC extends Applet {
                 
 	}
 
-//	public static void main(String[] args) {
-//		new mainCC();
-//	}
+	//public static void main() {
+	//	new mainCC();
+	//}
 
 }
