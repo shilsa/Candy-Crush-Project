@@ -168,11 +168,12 @@ public class DrawBoard extends JPanel{
 	
 		// draw the Candy
 		if (i == row - 1 && j == col - 1) {
-		if (mouseClicked < 1) showCandy(g);
+	/*	if (mouseClicked < 1) showCandy(g);
 		else {
 			if (java.lang.Math.abs(candySpeed2) == space) fallDown(g);
 			swapAnimation(g);
-		}
+		}*/
+		Animation(g);
 		}
 		else {
 			CandyMoving(g);
