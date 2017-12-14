@@ -62,6 +62,7 @@ public class DrawBoard extends JPanel{
 	// declare string name
 	List<String> Gemname = new ArrayList<String>();
 	public DrawBoard(){
+		//BlockLocation();
 		addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
@@ -95,6 +96,8 @@ public class DrawBoard extends JPanel{
 				}
 		    }
 		});
+		
+		System.out.println("CONTRUCTOR");
 	}
 	
 	public int getCandyBoard(int i, int j) {
