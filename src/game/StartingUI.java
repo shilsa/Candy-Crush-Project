@@ -5,9 +5,22 @@
  */
 package game;
 
+import java.io.IOException;
 import java.util.List;
+<<<<<<< HEAD
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.DrawBoard;
+=======
+>>>>>>> 3793a9439e1fac2e0e40eb1d99126f3cfb55d987
 
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+
+import Sound.Bgmusic;
+import Sound.PlayingMusicTheme;
+import Sound.StartingMusicTheme;
+import main.DrawBoard;
 import main.mainCC;
 
 
@@ -20,6 +33,11 @@ public class StartingUI extends javax.swing.JFrame {
     /**
      * Creates new form StartingUI
      */
+	// Setting up the music
+	static Bgmusic BGMusic = new StartingMusicTheme();
+	static Bgmusic PLM = new PlayingMusicTheme();
+	
+	
     public StartingUI() {
         initComponents();
     }
@@ -40,6 +58,11 @@ public class StartingUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         newgame.setText("New Game");
@@ -84,7 +107,13 @@ public class StartingUI extends javax.swing.JFrame {
     private void newgameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newgameActionPerformed
         // TODO add your handling code here:
         //mainCC newmain = new mainCC();
+<<<<<<< HEAD
+        mainCC mainCC = new mainCC();
+=======
         new mainCC();
+        BGMusic.clip.stop();
+        PLM.clip.loop(Clip.LOOP_CONTINUOUSLY);
+>>>>>>> 3793a9439e1fac2e0e40eb1d99126f3cfb55d987
         
     }//GEN-LAST:event_newgameActionPerformed
 
@@ -98,10 +127,22 @@ public class StartingUI extends javax.swing.JFrame {
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
-        writetofile w = new writetofile();
-        w.writetofile();
+        write_read w = new write_read();
+        try {
+            w.writetofile();
+        } catch (IOException ex) {
+        }
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        write_read r = new write_read();
+        try {
+            r.readfromfile();
+        } catch (IOException ex) {
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -137,6 +178,7 @@ public class StartingUI extends javax.swing.JFrame {
                 start.setSize(600,400);
                 start.setVisible(true);
                 start.setLocationRelativeTo(null);
+                BGMusic.clip.loop(Clip.LOOP_CONTINUOUSLY);
             }
         });
         

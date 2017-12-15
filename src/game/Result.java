@@ -5,7 +5,10 @@
  */
 package game;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -91,10 +94,8 @@ public class Result extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //List<Player> listofplayers = Data.getInstance().getPlayer_list();
         Player objPlayer = new Player();
         objPlayer.setName(name.getText());
-        int i = 0;
         objPlayer.setScore(Integer.parseInt(score.getText()));
         Data.getInstance().addPlayer(objPlayer);
         this.setVisible(false);
@@ -112,7 +113,7 @@ public class Result extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private static javax.swing.JTextField name;
+    public static javax.swing.JTextField name;
     public static javax.swing.JTextField score;
     // End of variables declaration//GEN-END:variables
 }

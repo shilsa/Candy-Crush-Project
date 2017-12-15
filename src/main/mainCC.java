@@ -29,8 +29,8 @@ public class mainCC extends Applet {
                 
 	}
 
-	//public static void main() {
-	//	new mainCC();
-	//}
+//	public static void main() {
+//		new mainCC();
+//	}
 
 }
