@@ -1,16 +1,1 @@
-<<<<<<< HEAD
-Your Name3
-59618
-Your Name2
-43845
-Your Name
-31735
-Your Name5
-11004
-Your Name4
-3
-Your Name
-0
-=======
 
->>>>>>> f0969d85b8e3ec0717bf5e21ef5029d61de33668

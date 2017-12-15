@@ -428,6 +428,6 @@ public class DrawBoard extends JPanel{
             m.frame.dispose();
             r.setScore(0);
             BlockLocation();
-            timePlay = 1000;
+            timePlay = 5000;
         }
 }
