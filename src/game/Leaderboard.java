@@ -5,6 +5,7 @@
  */
 package game;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -90,6 +91,7 @@ public class Leaderboard extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        
         Collections.sort(Data.getInstance().getPlayer_list());
         addtoLeaderboard();
     }//GEN-LAST:event_formWindowOpened

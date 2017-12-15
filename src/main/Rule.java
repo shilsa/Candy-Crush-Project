@@ -3,11 +3,13 @@ package main;
 
 import java.util.Random;
 
-import javax.swing.JPanel;
 
 import java.lang.Math;
 
 public class Rule extends DrawBoard {
+	/**
+	 * 
+	 */
 	static int a = 0;
 	static int b = 0;
 	static int value = 0;
@@ -153,13 +155,16 @@ public class Rule extends DrawBoard {
 			}
 		}
 		
-		for (int i = row / 2; i < row; i++)
-		{
-			for (int j = 0; j < col; j++)
-			{	
-				if (candyBoard[i][j] < 0)
-					score++;
+		if (turn == true) {
+			for (int i = row / 2; i < row; i++)
+			{
+				for (int j = 0; j < col; j++)
+				{	
+					if (candyBoard[i][j] < 0)
+						score++;
+				}
 			}
+			turn = false;
 		}
 		
 		for (int i = row / 2; i < row; i++)
