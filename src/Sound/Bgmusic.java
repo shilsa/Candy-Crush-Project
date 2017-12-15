@@ -17,7 +17,7 @@ abstract public class Bgmusic {
 		 try {
 				clip = AudioSystem.getClip();
 				clip.open(AudioSystem.getAudioInputStream(file));
-				 FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+				FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 			     gainControl.setValue(-k);
 				
 			} catch (Exception e1) {

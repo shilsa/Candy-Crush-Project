@@ -174,7 +174,7 @@ public class StartingUI extends javax.swing.JFrame {
                 start.setSize(600,400);
                 start.setVisible(true);
                 start.setLocationRelativeTo(null);
-      //          BGMusic.clip.loop(Clip.LOOP_CONTINUOUSLY);
+                BGMusic.clip.loop(Clip.LOOP_CONTINUOUSLY);
             }
         });
         
