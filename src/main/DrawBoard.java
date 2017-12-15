@@ -69,8 +69,6 @@ public class DrawBoard extends JPanel{
 		    	
 		    	if (mouseClicked % 2 == 0) mouseClicked = 0;
 		    	else mouseClicked = 1;
-		//    	System.out.println("MOUSE CLICKED " + mouseClicked );
-		//    	System.out.println(candyBoard[mouseY][mouseX]);
 		    	
 				if (mouseClicked == 0) {
 					value = candyBoard[mouseY][mouseX];
@@ -180,10 +178,10 @@ public class DrawBoard extends JPanel{
 			CandyMoving(g);
 			CandyPrinting(g);
 	//		System.out.println("I = " + i + " J = " + j );
+			}
+			if (timePlay > -4) timePlay--;
+			repaint();
 		}
-		if (timePlay > -4) timePlay--;
-		repaint();
-	}
 
 	
 
@@ -205,21 +203,21 @@ public class DrawBoard extends JPanel{
 				}
 			}
 			if(CandyMovingY <= (Y + ((i - row / 2)*space))){
-			if(CandyMovingY <= (Y + (i*space))){
-				CandyMovingY = MovingY;
-				t++;
-				j++;
+				if(CandyMovingY <= (Y + (i*space))){
+					CandyMovingY = MovingY;
+					t++;
+					j++;
 			
-				if(((t % col ) == 0) && (t != 0)){
-					if(t != CandyNumber) j = 0;
-					if (j == col) j--;
-					i++;
-					if(i == row){
-						i--;
+					if(((t % col ) == 0) && (t != 0)){
+						if(t != CandyNumber) j = 0;
+						if (j == col) j--;
+						i++;
+						if(i == row){
+							i--;
+						}
 					}
+				}
 			}
-		}
-	}
 		
 		}
 			
@@ -235,7 +233,6 @@ public class DrawBoard extends JPanel{
 		}
 		for(int k = row / 2; k <= i; k++ ){
 			for(int l = 0; l < col; l++){
-		//		Candy = new ImageIcon(Gemname.get(candyBoard[k][l]-1).toString());
 				Candy = new ImageIcon(Gemname.get(java.lang.Math.abs(candyBoard[k][l]-1)).toString());
 				if (l < j) {
 					Candy.paintIcon(this, g, CandyX, CandyY);
@@ -292,9 +289,9 @@ public class DrawBoard extends JPanel{
 				else if (CandyY >= Y)	Candy.paintIcon(this, g, CandyX, CandyY);
 					candySpeed = 0;
 					candySpeed2 = 0;
-			if (rule.check())		rule.update();
-					setTemp3();
-				}
+					if (rule.check())		rule.update();
+						setTemp3();
+					}
 				else {
 					
 					if(rule.check()) ;
@@ -402,17 +399,17 @@ public class DrawBoard extends JPanel{
 						
 					}
 						
-					}
+				}
 						
-				}
-					
-				}
-				CandyX += space;
 			}
+					
+		}
+				CandyX += space;
+	}
 			CandyX = X;
 			CandyY += space;
 //			System.out.println();
-		}
+}
 		
 	//	System.out.println("TEMP3 " + temp3[i][j]);
 		

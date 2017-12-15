@@ -7,12 +7,10 @@ package game;
 
 import java.io.IOException;
 import java.util.List;
-<<<<<<< HEAD
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import main.DrawBoard;
-=======
->>>>>>> 3793a9439e1fac2e0e40eb1d99126f3cfb55d987
+
 
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
@@ -107,13 +105,11 @@ public class StartingUI extends javax.swing.JFrame {
     private void newgameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newgameActionPerformed
         // TODO add your handling code here:
         //mainCC newmain = new mainCC();
-<<<<<<< HEAD
         mainCC mainCC = new mainCC();
-=======
+
         new mainCC();
         BGMusic.clip.stop();
         PLM.clip.loop(Clip.LOOP_CONTINUOUSLY);
->>>>>>> 3793a9439e1fac2e0e40eb1d99126f3cfb55d987
         
     }//GEN-LAST:event_newgameActionPerformed
 
@@ -178,7 +174,7 @@ public class StartingUI extends javax.swing.JFrame {
                 start.setSize(600,400);
                 start.setVisible(true);
                 start.setLocationRelativeTo(null);
-                BGMusic.clip.loop(Clip.LOOP_CONTINUOUSLY);
+      //          BGMusic.clip.loop(Clip.LOOP_CONTINUOUSLY);
             }
         });
         

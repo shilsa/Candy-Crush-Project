@@ -7,6 +7,9 @@ import java.util.Random;
 import java.lang.Math;
 
 public class Rule extends DrawBoard {
+	/**
+	 * 
+	 */
 	static int a = 0;
 	static int b = 0;
 	static int value = 0;
