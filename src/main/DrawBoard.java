@@ -43,7 +43,7 @@ public class DrawBoard extends JPanel{
 	private static double MouseY = mouseY;
 	static int temp3[][] = new int[row][col];
 	static int time = 0;
-	public static int timePlay = 1000;
+	public static int timePlay = 5000;
 	protected static boolean turn = false;
 	
 	// create random variable for the string name
