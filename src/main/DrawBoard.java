@@ -44,6 +44,7 @@ public class DrawBoard extends JPanel{
 	static int temp3[][] = new int[row][col];
 	static int time = 0;
 	public static int timePlay = 1000;
+	protected static boolean turn = false;
 	
 	// create random variable for the string name
 	Random random = new Random();
@@ -165,23 +166,16 @@ public class DrawBoard extends JPanel{
 	
 		// draw the Candy
 		if (i == row - 1 && j == col - 1) {
-	//	if (mouseClicked < 1) showCandy(g);
-	//	else {
-		//	if (java.lang.Math.abs(candySpeed2) == space) fallDown(g);
-	//		swapAnimation(g);
-	//	}
-		Animation(g);	
 
 		Animation(g);
 		}
 		else {
 			CandyMoving(g);
 			CandyPrinting(g);
-	//		System.out.println("I = " + i + " J = " + j );
-			}
-			if (timePlay > -4) timePlay--;
-			repaint();
 		}
+		if (timePlay > -4) timePlay--;
+		repaint();
+	}
 
 	
 
@@ -325,6 +319,7 @@ public class DrawBoard extends JPanel{
 									if (fallingDown.check2()) {
 									}
 									if (temp3[a][b] == fallingDown.maxCandyStatus()) {
+										turn = true;
 										if (rule.check()) {
 											rule.update();
 											setTemp3();
@@ -404,22 +399,20 @@ public class DrawBoard extends JPanel{
 			}
 					
 		}
-				CandyX += space;
+		CandyX += space;
 	}
-			CandyX = X;
-			CandyY += space;
-//			System.out.println();
+	CandyX = X;
+	CandyY += space;
 }
 		
-	//	System.out.println("TEMP3 " + temp3[i][j]);
 		
-		}
+}
 	
 	private boolean swapCondition() {
 		Rule rule = new Rule();
 		if (java.lang.Math.abs(b - mouseY) > 1 || java.lang.Math.abs(a - mouseX) > 1) return false;
 		else if (java.lang.Math.abs(b - mouseY) == 1 && java.lang.Math.abs(a - mouseX) == 1) return false;
-	//	else if (timePlay <= 0) return false;
+		else if (timePlay <= 0) return false;
 		return true;
 	}
 

@@ -155,13 +155,16 @@ public class Rule extends DrawBoard {
 			}
 		}
 		
-		for (int i = row / 2; i < row; i++)
-		{
-			for (int j = 0; j < col; j++)
-			{	
-				if (candyBoard[i][j] < 0)
-					score++;
+		if (turn == true) {
+			for (int i = row / 2; i < row; i++)
+			{
+				for (int j = 0; j < col; j++)
+				{	
+					if (candyBoard[i][j] < 0)
+						score++;
+				}
 			}
+			turn = false;
 		}
 		
 		for (int i = row / 2; i < row; i++)
