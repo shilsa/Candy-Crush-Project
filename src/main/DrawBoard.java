@@ -412,7 +412,7 @@ public class DrawBoard extends JPanel{
 		Rule rule = new Rule();
 		if (java.lang.Math.abs(b - mouseY) > 1 || java.lang.Math.abs(a - mouseX) > 1) return false;
 		else if (java.lang.Math.abs(b - mouseY) == 1 && java.lang.Math.abs(a - mouseX) == 1) return false;
-		else if (timePlay <= 0) return false;
+	//	else if (timePlay <= 0) return false;
 		return true;
 	}
 
@@ -426,6 +426,8 @@ public class DrawBoard extends JPanel{
             result.score.setText(Integer.toString(r.getScore()));
             mainCC m = new mainCC();
             m.frame.dispose();
-            
+            r.setScore(0);
+            BlockLocation();
+            timePlay = 1000;
         }
 }

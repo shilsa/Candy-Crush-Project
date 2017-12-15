@@ -4,7 +4,6 @@ package main;
 import java.util.Random;
 
 
-import java.lang.Math;
 
 public class Rule extends DrawBoard {
 	/**
@@ -20,6 +19,9 @@ public class Rule extends DrawBoard {
 	
         public int getScore(){
             return score;
+        }
+        public void setScore(int a) {
+        	this.score = a;
         }
 	private void checkRow(int y, int x) {
 		int value = java.lang.Math.abs(candyBoard[y][x]);
