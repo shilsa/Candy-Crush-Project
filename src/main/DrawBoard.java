@@ -1,9 +1,15 @@
 package main;
 
 import game.Result;
+
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import java.awt.event.*;
 import javax.swing.JPanel;
+
+import Sound.Bgmusic;
+import Sound.DiamondHitMusic;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -43,7 +49,7 @@ public class DrawBoard extends JPanel{
 	private static double MouseY = mouseY;
 	static int temp3[][] = new int[row][col];
 	static int time = 0;
-	public static int timePlay = 5000;
+	public static int timePlay = 10000;
 	protected static boolean turn = false;
 	
 	// create random variable for the string name
@@ -83,6 +89,11 @@ public class DrawBoard extends JPanel{
 					else {
 						candyBoard[b][a] =  getCandyBoard(mouseY, mouseX);
 						candyBoard[mouseY][mouseX] = value;
+						if(rule.check()) {
+							 Bgmusic DH = new DiamondHitMusic();
+							 DH.clip.start();
+						}
+						
 						if (rule.check() == false) {
 							candyBoard[mouseY][mouseX] = candyBoard[b][a];
 							candyBoard[b][a] = value;
