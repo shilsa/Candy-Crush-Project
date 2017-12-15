@@ -3,7 +3,6 @@ package main;
 
 import java.util.Random;
 
-import javax.swing.JPanel;
 
 import java.lang.Math;
 
